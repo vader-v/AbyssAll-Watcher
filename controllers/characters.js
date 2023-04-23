@@ -33,10 +33,13 @@ function create(req, res) {
     res.redirect('/new-character')
   })
 }
-function showChar(req, res) {
-  Char.findById(req.params.id)
+function show(req, res) {
+  Char.findById(req.params.charId)
   .then((char) => {
-    res.render('characters', { char })
+    res.render('characters/show', {
+  char,
+  title: 'Character Details'
+})
   })
   .catch((err) => {
     console.error(err)
@@ -47,4 +50,5 @@ export {
   index,
   create,
   newChar as new,
+  show
 }
