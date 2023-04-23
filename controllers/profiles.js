@@ -4,7 +4,7 @@ import { Profile } from "../models/profile.js"
 function index(req, res) {
   Profile.find({})
   .then((profiles) => {
-    res.render('profiles/index', {
+    res.render('profile', {
       profiles,
       title: "Profiles",
       name: name,
