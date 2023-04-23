@@ -4,11 +4,14 @@
 </head>
 <body>
   <nav>
+    <a href="../characters">🤪</a>
     <% if (user) { %>
+      <a href="../characters/team-creator">team-creator</a>
       <a href="/auth/logout" class="right">
         <button type="submit">Logout</button>
       </a>
-    <% } else { %>
+      <a href="/profile">Your Profile</a>
+      <% } else { %>
       <div 
         id="g_id_onload"
         data-client_id="<%= googleClientID %>"

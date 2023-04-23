@@ -5,8 +5,10 @@ import { isLoggedIn } from '../middleware/middleware.js'
 const router = Router()
 
 router.get('/', charsCtrl.index)
-router.get('/', isLoggedIn, charsCtrl.create)
-
+//GET localhost/characters/new 
+router.get('/characters', charsCtrl.new)
+//POST localhost/characters add new char on chars view
+router.post('/', charsCtrl.create)
 export {
   router
 }
