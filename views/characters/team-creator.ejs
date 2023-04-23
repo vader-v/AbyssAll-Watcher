@@ -6,7 +6,29 @@
   one submit button with the form sending a post request to our profile teams section -->
   
   <body>
-    
+    <form action="/teams/<%= team._id %>?_method=PUT" method="POST">
+      <select name="name" id="char1Slot">
+        <% characters.forEach(function(char) { %>
+          <option><%= char.name %></option>
+          <% }) %>
+        </select>
+        <select name="name" id="char2Slot">
+          <% characters.forEach(function(char) { %>
+            <option><%= char.name %></option>
+            <% }) %>
+          </select>
+          <select name="name" id="char3Slot">
+            <% characters.forEach(function(char) { %>
+              <option><%= char.name %></option>
+              <% }) %>
+          </select>
+          <select name="name" id="char4Slot">
+            <% characters.forEach(function(char) { %>
+              <option><%= char.name %></option>
+            <% }) %>
+          </select>
+          <button type="submit">New team</button>
+        </form>
   </body>
-  
+
   <%- include('../partials/footer') %>
