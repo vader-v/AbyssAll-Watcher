@@ -1,13 +1,41 @@
-<!-- Add view for all characters ingame show. Admin (myself) updates the array with new characters as hoyoverse releases them.-->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-</head>
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
 <body>
-  <h1>hi</h1>
-</body>
-</html>
+<h1>Genshin Impact Characters</h1>
+
+  <!-- <form method="get" action="/characters/new">
+    <button type="submit">Add New Character</button>
+  </form> -->
+    <section>
+      <h1>Characters</h1>
+        <h2>Add a Character!</h2>
+        <form action="/characters" method="POST">
+          <div>
+            <label for="name">
+              Name:
+            </label>
+            <input type="text" name="name" autocomplete="off">
+          </div>
+          <div>
+            <label for="image">Image URL:</label>
+      <input type="url" id="image" name="image" required>
+          </div>
+          <button type="submit">Add Character</button>
+          
+        </form>
+      <h2>All the Characters!</h2>
+      <ul>
+        <% characters.forEach(char => { %>
+          <li>
+            🧑
+            <a href="/characters/<%= char._id %>"><%= char.name %></a>
+              
+          </li>
+        <% }) %>
+      </ul>
+    </section>
+  </body>
+  
+
+<%- include('../partials/footer') %>
