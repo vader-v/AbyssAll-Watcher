@@ -37,7 +37,7 @@ function show(req, res) {
   Char.findById(req.params.charId)
   .then((char) => {
     res.render('characters/show', {
-  char,
+  char: char,
   title: 'Character Details'
 })
   })
