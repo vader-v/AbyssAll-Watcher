@@ -1,4 +1,3 @@
-import { name } from "ejs"
 import { Profile, Team } from "../models/profile.js"
 import { Char } from "../models/character.js"
 
@@ -33,47 +32,61 @@ function index(req, res) {
 
 
 function createTeam(req, res) {
-  console.log(req.body )
+  console.log(req.body)
+  const { name, char1, char2, char3, char4 } = req.body
+  console.log(req.body)
+  // Create the team object with the given name and characters
   const team = new Team({
-    name: req.body.name,
+    name: name,
     owner: req.user._id,
     characters: [
-      { character1: req.body.char1 },
-      { character2: req.body.char2 },
-      { character3: req.body.char3 },
-      { character4: req.body.char4 },
+      { character: char1 },
+      { character: char2 },
+      { character: char3 },
+      { character: char4 }
     ]
   })
+
+  // Save the team object to the database
   team.save()
-  .then(() => {
-    console.log(team)
-    Profile.findByIdAndUpdate(req.user.profile._id, { $push: { teams: team } })
-    .then(() => {
-      console.log(team)
-      res.redirect('/profile')
+    .then((savedTeam) => {
+      console.log(req.body)
+      // Update the user's profile to include the new team
+      Profile.findByIdAndUpdate(req.user.profile._id, {
+        $push: { teams: savedTeam }
+      })
+        .then(() => {
+          // Redirect to the user's profile page
+          res.redirect('/profiles/profile')
+        })
+        .catch((err) => {
+          console.log(err)
+          res.redirect('/profiles/profile')
+        })
     })
-    .catch(err => {
+    .catch((err) => {
       console.log(err)
-      res.redirect('/profile')
+      res.redirect('/profiles/profile')
     })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/profile')
-  })
 }
 
-function addTeam(req, res) {
-  const teamId = req.body.teamId
-  const userId = req.user._id
 
-  Profile.findByIdAndUpdate(req.user.profile,
-    { user: userId },
-    { $push: { teams: teamId }
-  },
-    { new: true }
-  )
-  .populate('teams')
+function addTeam(req, res) {
+  const teamName = req.body.teamName
+  const characterIds = req.body.characters
+  const team = new Team({
+    name: teamName,
+    owner: req.user.profile,
+    characters: characterIds
+  })
+  //save team to database
+  team.save()
+  .then((savedTeam) => {
+    return Profile.findByIdAndUpdate(req.user.profile,{ $push: { teams: savedTeam._id }
+    },
+      { new: true })
+    .populate('teams')
+  })
   .then((profile) => {
     res.redirect('/profile', {
       profile,
