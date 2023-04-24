@@ -6,6 +6,7 @@ const teamSchema = new Schema({
   name:  {
     type: String,
     required: true,
+    default: "New Team",
   },
   owner: [{
     type: Schema.Types.ObjectId,  
@@ -29,7 +30,8 @@ const profileSchema = new Schema({
     ref: 'Character'
   }],
   teams: {
-    type: [teamSchema]
+    type: [teamSchema],
+    default: [],
   },
   favorites: [{
     type: Schema.Types.ObjectId,

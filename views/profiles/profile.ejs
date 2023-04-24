@@ -1,0 +1,16 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+<!-- display user google pfp, user fav chars array, and all users created teams -->
+<main>
+  <h1>hello, <%= profile ? profile.name : "traveller" %> Welcome to your profile.</h1>
+  <% if (profile?.avatar) { %>
+    <div>
+      <img
+        src="<%= profile.avatar %>"
+        alt="<%= profile.name %> avatar"
+      />
+    </div>
+  <% } %>
+  </main>
+
+<%- include('../partials/footer') %>
