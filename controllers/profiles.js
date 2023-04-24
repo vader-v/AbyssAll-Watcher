@@ -10,18 +10,18 @@ function show(req, res) {
 }
 function index(req, res) {
   Profile.findById(req.user.profile)
-  // .populate('teams')
+  .populate('teams')
   .then((profile) => {
     res.render('profiles/profile', {
       profile,
-      // teams: user.teams,
-      // name,
+      teams: profile.teams,
+      name,
       title: "Profiles"
     })
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/')
+    res.redirect('/profiles/profile')
   })
 }
 // function index(req, res) {
