@@ -7,23 +7,36 @@
 
   <body>
     <h1>hey heres tht view u wanted to see</h1>
-    <form action="../profiles/profile">
-      <label for="teamName">Team Name:</label>
-      <input type="text" id="teamName">
+    <form action="../profiles/profile" method="POST">
+      <label for="name">Team Name:</label>
+      <input type="text" id="name" name="name">
+
       <select name="char1" id="char1Dropdown">
         <option value=""></option>
+        <% characters.forEach((char) => { %>
+          <option value="<%= char._id %>"><%= char.name %></option>
+        <% }) %>
       </select>
-      <select name="name" id="char2Dropdown">
+      <select name="char2" id="char2Dropdown">
         <option value=""></option>
+        <% characters.forEach((char) => { %>
+          <option value="<%= char._id %>"><%= char.name %></option>
+        <% }) %>
       </select>
-      <select name="name" id="char3Dropdown">
+      <select name="char3" id="char3Dropdown">
         <option value=""></option>
+        <% characters.forEach((char) => { %>
+          <option value="<%= char._id %>"><%= char.name %></option>
+        <% }) %>
       </select>
-      <select name="name" id="char4Dropdown">
+      <select name="char4" id="char4Dropdown">
         <option value=""></option>
+        <% characters.forEach((char) => { %>
+          <option value="<%= char._id %>"><%= char.name %></option>
+        <% }) %>
       </select>
       <button type="submit">Add Team</button>
     </form>
   </body>
-
+char
   <%- include('../partials/footer') %>

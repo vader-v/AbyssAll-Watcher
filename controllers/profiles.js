@@ -22,7 +22,6 @@ function index(req, res) {
     res.render('profiles/profile', {
       profile,
       teams: profile.teams,
-      name,
       title: "Profiles"
     })
   })
@@ -34,20 +33,23 @@ function index(req, res) {
 
 
 function createTeam(req, res) {
+  console.log(req.body )
   const team = new Team({
     name: req.body.name,
-    owner:req.user._id,
+    owner: req.user._id,
     characters: [
-      { character1: req.body.char1Slot },
-      { character2: req.body.char2Slot },
-      { character3: req.body.char3Slot },
-      { character4: req.body.char4Slot },
+      { character1: req.body.char1 },
+      { character2: req.body.char2 },
+      { character3: req.body.char3 },
+      { character4: req.body.char4 },
     ]
   })
   team.save()
   .then(() => {
-    Profile.findByIdAndUpdate(req.user.profile, { $push: { teams: team } })
+    console.log(team)
+    Profile.findByIdAndUpdate(req.user.profile._id, { $push: { teams: team } })
     .then(() => {
+      console.log(team)
       res.redirect('/profile')
     })
     .catch(err => {
@@ -61,8 +63,33 @@ function createTeam(req, res) {
   })
 }
 
+function addTeam(req, res) {
+  const teamId = req.body.teamId
+  const userId = req.user._id
+
+  Profile.findByIdAndUpdate(req.user.profile,
+    { user: userId },
+    { $push: { teams: teamId }
+  },
+    { new: true }
+  )
+  .populate('teams')
+  .then((profile) => {
+    res.redirect('/profile', {
+      profile,
+      teams: profile.teams,
+      title: 'Profiles'
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/profiles/profile')
+  })
+}
+
 export {
   index,
   createTeam,
   show,
+  addTeam,
 }

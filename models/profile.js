@@ -14,7 +14,7 @@ const teamSchema = new Schema({
   }],
   characters: [{
     type: Schema.Types.ObjectId,
-    ref: 'Characters'
+    ref: 'Character'
   }]
 }, {
   timestamps: true
