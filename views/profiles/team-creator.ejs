@@ -4,32 +4,26 @@
   one text input
   four dropdown inputs
   one submit button with the form sending a post request to our profile teams section -->
-team
+
   <body>
     <h1>hey heres tht view u wanted to see</h1>
-    <form action="/profile/<%= profile._id %>?_method=PUT" method="POST">
-      <select name="name" id="char1Slot">
-        <% characters.forEach(function(char) { %>
-          <option><%= char.name %></option>
-          <% }) %>
-        </select>
-        <select name="name" id="char2Slot">
-          <% characters.forEach(function(char) { %>
-            <option><%= char.name %></option>
-            <% }) %>
-          </select>
-          <select name="name" id="char3Slot">
-            <% characters.forEach(function(char) { %>
-              <option><%= char.name %></option>
-              <% }) %>
-          </select>
-          <select name="name" id="char4Slot">
-            <% characters.forEach(function(char) { %>
-              <option><%= char.name %></option>
-            <% }) %>
-          </select>
-          <button type="submit">New team</button>
-        </form>
+    <form action="../profiles/profile">
+      <label for="teamName">Team Name:</label>
+      <input type="text" id="teamName">
+      <select name="char1" id="char1Dropdown">
+        <option value=""></option>
+      </select>
+      <select name="name" id="char2Dropdown">
+        <option value=""></option>
+      </select>
+      <select name="name" id="char3Dropdown">
+        <option value=""></option>
+      </select>
+      <select name="name" id="char4Dropdown">
+        <option value=""></option>
+      </select>
+      <button type="submit">Add Team</button>
+    </form>
   </body>
 
   <%- include('../partials/footer') %>
