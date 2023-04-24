@@ -1,11 +1,18 @@
 import { name } from "ejs"
 import { Profile, Team } from "../models/profile.js"
+import { Char } from "../models/character.js"
 
 function show(req, res) {
-  res.render('characters/team-creator', {
-    char,
-    name,
-    title: "Team Creator"
+  Char.find({})
+  .then(characters => {
+    res.render('profiles/team-creator', {
+      characters,
+      title: "Team Creator",
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/profiles/profile')
   })
 }
 function index(req, res) {
@@ -24,20 +31,7 @@ function index(req, res) {
     res.redirect('/profiles/profile')
   })
 }
-// function index(req, res) {
-//   Profile.find({})
-//   .then((profiles) => {
-//     res.render('profile', {
-//       profiles,
-//       title: "Profiles",
-//       name: name,
-//     })
-//   })
-//   .catch(err => {
-//     console.log(err)
-//     res.redirect('/')
-//   })
-// }
+
 
 function createTeam(req, res) {
   const team = new Team({
@@ -71,5 +65,4 @@ export {
   index,
   createTeam,
   show,
-  // prof,
 }
