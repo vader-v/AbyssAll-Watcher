@@ -112,6 +112,7 @@ function getTeam(req, res) {
     res.redirect('/profiles/profile')
   })
 }
+
 export {
   index,
   createTeam,
