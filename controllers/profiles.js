@@ -115,12 +115,13 @@ function getTeam(req, res) {
 //show team details through /:teamId
 function showTeam(req, res) {
   const teamId = req.params.teamId
-
+  const name = req.user.name
   Team.findById(teamId)
-  .populate('createdBy.user', 'username')
+  .populate('createdBy.user')
   .then(team => {
     res.render('profiles/show-team', {
       team,
+      name,
       title: 'Team Details'
     })
   })
