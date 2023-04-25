@@ -98,15 +98,9 @@ function addTeam(req, res) {
 }
 
 function getTeam(req, res) {
-  const userId = req.user._id
-  Team.find({ createdBy: { user: userId } })
-  .populate('teams')
-  .then((teams) => {
-    res.render('teams', {
-      teams,
+    res.render('profiles/teams', {
       title: 'My Teams'
     })
-  })
   .catch(err => {
     console.log(err)
     res.redirect('/profiles/profile')
