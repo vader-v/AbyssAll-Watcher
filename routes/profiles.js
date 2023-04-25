@@ -9,7 +9,7 @@ router.get('/profile', isLoggedIn, profCtrl.index)
 router.get('/team-creator', isLoggedIn, profCtrl.show)
 router.post('/team-creator', isLoggedIn, profCtrl.createTeam)
 router.post('/profile', isLoggedIn, profCtrl.addTeam)
-
+router.get('/teams', isLoggedIn, profCtrl.getTeam)
 export {
   router
 }

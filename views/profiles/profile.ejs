@@ -12,25 +12,10 @@
     </div>
   <% } %>
   <div> 
+    <a href="./teams">View Teams</a>
     <h1>
       <%= teams.name %>
     </h1>
-    <% if (teams.length > 0) { %>
-      <h2>Teams:</h2>
-      <ul>
-        <% teams.forEach(function(team) { %>
-          <li><%= team.name %>:
-          <ul>
-            <% team.characters.forEach(function(character) { %>
-              <li><%= character.name %></li>
-          <% }) %>
-          </ul>
-        </li>
-      <% }) %>
-      </ul>
-      <% } else { %>
-        <p>No teams.</p>
-    <% } %>
   </div>
   </main>
 
