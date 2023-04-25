@@ -32,9 +32,7 @@ function index(req, res) {
 
 
 function createTeam(req, res) {
-  console.log(req.body)
   const { name, char1, char2, char3, char4 } = req.body
-  console.log(req.body)
   // Create the team object with the given name and characters
   const team = new Team({
     name: name,
@@ -50,7 +48,6 @@ function createTeam(req, res) {
   // Save the team object to the database
   team.save()
     .then((savedTeam) => {
-      console.log(req.body)
       // Update the user's profile to include the new team
       Profile.findByIdAndUpdate(req.user.profile._id, {
         $push: { teams: savedTeam }
@@ -115,7 +112,8 @@ function getTeam(req, res) {
 //show team details through /:teamId
 function showTeam(req, res) {
   const teamId = req.params.teamId
-  const name = req.user.name
+  const name = req.user.profile.name
+  
   Team.findById(teamId)
   .populate('createdBy.user')
   .then(team => {

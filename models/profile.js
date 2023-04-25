@@ -10,7 +10,8 @@ const teamSchema = new Schema({
   },
   createdBy: [{
     type: Schema.Types.ObjectId,  
-    ref: 'User',
+    ref: 'Profile',
+    required: true,
   }],
   characters: [{
     type: Schema.Types.ObjectId,
