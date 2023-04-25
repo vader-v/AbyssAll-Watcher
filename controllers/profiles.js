@@ -112,7 +112,23 @@ function getTeam(req, res) {
       res.redirect('/profiles/teams')
     })
 }
+//show team details through /:teamId
+function showTeam(req, res) {
+  const teamId = req.params.teamId
 
+  Team.findById(teamId)
+  .populate('createdBy.user', 'username')
+  .then(team => {
+    res.render('profiles/show-team', {
+      team,
+      title: 'Team Details'
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/profiles/teams')
+  })
+}
 
 export {
   index,
@@ -120,4 +136,5 @@ export {
   show,
   addTeam,
   getTeam,
+  showTeam
 }

@@ -10,6 +10,7 @@ router.get('/team-creator', isLoggedIn, profCtrl.show)
 router.post('/team-creator', isLoggedIn, profCtrl.createTeam)
 router.post('/profile', isLoggedIn, profCtrl.addTeam)
 router.get('/teams', isLoggedIn, profCtrl.getTeam)
+router.get('/teams/:teamId', isLoggedIn, profCtrl.showTeam)
 export {
   router
 }
