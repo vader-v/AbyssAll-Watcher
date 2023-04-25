@@ -8,9 +8,9 @@ const teamSchema = new Schema({
     required: true,
     default: "New Team",
   },
-  owner: [{
+  createdBy: [{
     type: Schema.Types.ObjectId,  
-    ref: 'Profile',
+    ref: 'User',
   }],
   characters: [{
     type: Schema.Types.ObjectId,

@@ -72,32 +72,29 @@ function createTeam(req, res) {
 
 
 function addTeam(req, res) {
-  const teamName = req.body.teamName
-  const characterIds = req.body.characters
-  const team = new Team({
-    name: teamName,
-    owner: req.user.profile,
-    characters: characterIds
+  const { name, char1, char2, char3, char4 } = req.body
+  const userId = req.user._id
+
+  const newTeam = new Team({
+    name,
+    characters: [char1, char2, char3, char4],
+    createdBy: userId
   })
-  //save team to database
-  team.save()
-  .then((savedTeam) => {
-    return Profile.findByIdAndUpdate(req.user.profile,{ $push: { teams: savedTeam._id }
-    },
-      { new: true })
-    .populate('teams')
-  })
-  .then((profile) => {
-    res.redirect('/profile', {
-      profile,
-      teams: profile.teams,
-      title: 'Profiles'
+  newTeam.save()
+    .then((team) => {
+      return Profile.findOneAndUpdate(
+        { user: userId },
+        { $push: { teams: team._id } },
+        { new: true })
+        .populate('teams')
     })
-  })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/profiles/profile')
-  })
+    .then((profile) => {
+      res.redirect('/profiles/profile')
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/profiles/profile')
+    })
 }
 
 export {
