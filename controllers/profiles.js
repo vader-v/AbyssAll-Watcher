@@ -33,10 +33,11 @@ function index(req, res) {
 
 function createTeam(req, res) {
   const { name, char1, char2, char3, char4 } = req.body
+  const createdBy = req.user.profile
   // Create the team object with the given name and characters
   const team = new Team({
     name: name,
-    owner: req.user._id,
+    createdBy: createdBy._id,
     characters: [
       { character: char1 },
       { character: char2 },
@@ -70,12 +71,12 @@ function createTeam(req, res) {
 
 function addTeam(req, res) {
   const { name, char1, char2, char3, char4 } = req.body
-  const userId = req.user._id
+  const createdBy = req.user.profile
 
   const newTeam = new Team({
     name,
     characters: [char1, char2, char3, char4],
-    createdBy: userId
+    createdBy: createdBy._id,
   })
   newTeam.save()
     .then((team) => {

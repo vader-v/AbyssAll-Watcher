@@ -8,11 +8,11 @@ const teamSchema = new Schema({
     required: true,
     default: "New Team",
   },
-  createdBy: [{
+  createdBy: {
     type: Schema.Types.ObjectId,  
     ref: 'Profile',
     required: true,
-  }],
+  },
   characters: [{
     type: Schema.Types.ObjectId,
     ref: 'Character'
