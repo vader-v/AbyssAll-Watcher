@@ -1,7 +1,18 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<h1>Teams</h1>
-
+<body>
+  <h1>Teams</h1>
+  <ul>
+    <% teams.forEach((team) => { %>
+      <li><%= team.name %>
+        <%= team.char1 %>
+        <%= team.char2 %>
+        <%= team.char3 %>
+        <%= team.char4 %>
+      </li>
+    <% }) %>
+  </ul>
+</body>
 
 <%- include('../partials/footer') %>

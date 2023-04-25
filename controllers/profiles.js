@@ -98,14 +98,20 @@ function addTeam(req, res) {
 }
 
 function getTeam(req, res) {
-    res.render('profiles/teams', {
-      title: 'My Teams'
+  Team.find({})
+    .populate('createdBy.user')
+    .then((teams) => {
+      res.render('profiles/teams', {
+        teams,
+        title: 'Teams'
+      })
     })
-  .catch(err => {
-    console.log(err)
-    res.redirect('/profiles/profile')
-  })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/profiles/teams')
+    })
 }
+
 
 export {
   index,
