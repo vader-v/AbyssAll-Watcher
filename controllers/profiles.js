@@ -103,7 +103,8 @@ function getTeam(req, res) {
     .then((teams) => {
       res.render('profiles/teams', {
         teams,
-        title: 'Teams'
+        title: 'Teams',
+        req
       })
     })
     .catch(err => {

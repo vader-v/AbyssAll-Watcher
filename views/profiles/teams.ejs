@@ -5,11 +5,8 @@
   <h1>Teams</h1>
   <ul>
     <% teams.forEach((team) => { %>
-      <li><%= team.name %>
-        <%= team.char1 %>
-        <%= team.char2 %>
-        <%= team.char3 %>
-        <%= team.char4 %>
+      <li>
+        <a href="/teams/<%= team._id %>"><%= team.name %></a>
       </li>
     <% }) %>
   </ul>
