@@ -36,7 +36,6 @@ function create(req, res) {
 function show(req, res) {
   Char.findById(req.params.charId)
   .then((char) => {
-    console.log(char)
     res.render('characters/show', {
   char: char,
   title: 'Character Details'

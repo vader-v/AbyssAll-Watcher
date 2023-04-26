@@ -118,7 +118,7 @@ function getTeam(req, res) {
 function showTeam(req, res) {
   const teamId = req.params.teamId
   const name = req.user.profile.name
-  console.log(teamId)
+  
   Team.findById(teamId)
   .populate({ path: 'createdBy', select: 'name' })
   .populate({ path: 'characters', model: 'Char' })
