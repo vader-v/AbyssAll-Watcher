@@ -97,7 +97,7 @@ function addTeam(req, res) {
 
 function getTeam(req, res) {
   Team.find({})
-    .populate('createdBy.user')
+    .populate({ path: 'createdBy', select: 'name' })
     .then((teams) => {
       res.render('profiles/teams', {
         teams,
@@ -116,7 +116,7 @@ function showTeam(req, res) {
   const name = req.user.profile.name
   
   Team.findById(teamId)
-  .populate('createdBy.user')
+  .populate({ path: 'createdBy', select: 'name' })
   .then(team => {
     res.render('profiles/show-team', {
       team,
