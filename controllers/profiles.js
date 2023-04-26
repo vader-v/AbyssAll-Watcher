@@ -135,8 +135,7 @@ function showTeam(req, res) {
   })
 }
 function edit(req, res) {
-  const teamId = req.params.teamId
-  Team.findById(teamId)
+  Team.findById(req.params.teamId)
   .then(team => {
       res.render('profiles/edit-team',{
         title: 'Edit Team',
