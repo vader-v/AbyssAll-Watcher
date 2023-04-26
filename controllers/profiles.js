@@ -35,19 +35,23 @@ function createTeam(req, res) {
   const { name, char1, char2, char3, char4 } = req.body
   const createdBy = req.user.profile
   // Create the team object with the given name and characters
-  const team = new Team({
-    name: name,
-    createdBy: createdBy._id,
-    characters: [
-      { character: char1 },
-      { character: char2 },
-      { character: char3 },
-      { character: char4 }
-    ]
-  })
-
+  // Find the characters from the database using their IDs
+  Promise.all([
+    Char.findById(char1),
+    Char.findById(char2),
+    Char.findById(char3),
+    Char.findById(char4),
+  ])
+    .then((characters) => {
+      // Create the team object with the given name and characters
+      const team = new Team({
+        name: name,
+        createdBy: createdBy._id,
+        characters: characters,
+      })
+      return team.save()
+    })
   // Save the team object to the database
-  team.save()
     .then((savedTeam) => {
       // Update the user's profile to include the new team
       Profile.findByIdAndUpdate(req.user.profile._id, {
@@ -117,6 +121,7 @@ function showTeam(req, res) {
   
   Team.findById(teamId)
   .populate({ path: 'createdBy', select: 'name' })
+  .populate({ path: 'characters', model: 'Char' })
   .then(team => {
     res.render('profiles/show-team', {
       team,

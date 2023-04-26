@@ -14,6 +14,7 @@ const teamSchema = new Schema({
     required: true,
   },
   characters: [{
+    name: String,
     type: Schema.Types.ObjectId,
     ref: 'Character'
   }]
