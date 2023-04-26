@@ -5,28 +5,7 @@
 <!-- Main view concept: view shows form that has team name and character inputs prefilled in a text input and dropdown menu's. user can submit the form via a button and is redirected back to the user profile page with the updated information.-->
 
 <body>
-  <form action="/teams/<%= team._id %>?_method=PUT" method="POST">
-    <select name="name" id="char1Slot">
-      <% characters.forEach(function(char) { %>
-        <option><%= char.name %></option>
-        <% }) %>
-      </select>
-      <select name="name" id="char2Slot">
-        <% characters.forEach(function(char) { %>
-          <option><%= char.name %></option>
-          <% }) %>
-        </select>
-        <select name="name" id="char3Slot">
-          <% characters.forEach(function(char) { %>
-            <option><%= char.name %></option>
-            <% }) %>
-        </select>
-        <select name="name" id="char4Slot">
-          <% characters.forEach(function(char) { %>
-            <option><%= char.name %></option>
-          <% }) %>
-        </select>
-      </form>
+  <h1>hi</h1>
   </body>
 
   <%- include('../partials/footer') %>

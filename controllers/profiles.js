@@ -134,12 +134,22 @@ function showTeam(req, res) {
     res.redirect('/profiles/teams')
   })
 }
-
+function edit(req, res) {
+    res.render('profiles/edit-team',{
+      team: team,
+      title: 'Edit Team'
+    })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/profiles/teams')
+  })
+}
 export {
   index,
   createTeam,
   show,
   addTeam,
   getTeam,
-  showTeam
+  showTeam,
+  edit
 }
