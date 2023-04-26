@@ -136,7 +136,6 @@ function showTeam(req, res) {
 }
 function edit(req, res) {
     res.render('profiles/edit-team',{
-      team: team,
       title: 'Edit Team'
     })
   .catch(err => {
