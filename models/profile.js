@@ -11,7 +11,6 @@ const teamSchema = new Schema({
   createdBy: {
     type: Schema.Types.ObjectId,  
     ref: 'Profile',
-    required: true,
   },
   characters: [{
     name: String,

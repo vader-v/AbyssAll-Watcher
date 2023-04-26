@@ -11,7 +11,8 @@ router.post('/team-creator', isLoggedIn, profCtrl.createTeam)
 router.post('/profile', isLoggedIn, profCtrl.addTeam)
 router.get('/teams', isLoggedIn, profCtrl.getTeam)
 router.get('/teams/:teamId', isLoggedIn, profCtrl.showTeam)
-router.get('/profiles/edit-team', isLoggedIn, profCtrl.edit)
+router.get('/:teamId/edit-team', isLoggedIn, profCtrl.edit)
+
 export {
   router
 }

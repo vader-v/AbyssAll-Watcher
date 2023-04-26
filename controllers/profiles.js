@@ -135,9 +135,14 @@ function showTeam(req, res) {
   })
 }
 function edit(req, res) {
-    res.render('profiles/edit-team',{
-      title: 'Edit Team'
-    })
+  const teamId = req.params.teamId
+  Team.findById(teamId)
+  .then(team => {
+      res.render('profiles/edit-team',{
+        title: 'Edit Team',
+        team,
+      })
+  })
   .catch(err => {
     console.log(err)
     res.redirect('/profiles/teams')
@@ -150,5 +155,5 @@ export {
   addTeam,
   getTeam,
   showTeam,
-  edit
+  edit,
 }
