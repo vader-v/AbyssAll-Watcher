@@ -13,30 +13,25 @@ const teamSchema = new Schema({
     ref: 'Profile',
   },
   characters: [{
-    name: String,
     type: Schema.Types.ObjectId,
-    ref: 'Character'
+    ref: 'Char'
   }]
 }, {
   timestamps: true
 })
 
-const Team = mongoose.model('Team', teamSchema)
 
 const profileSchema = new Schema({
   name: String,
   avatar: String,
   characters: [{ 
     type: Schema.Types.ObjectId,
-    ref: 'Character'
+    ref: 'Char'
   }],
-  teams: {
-    type: [teamSchema],
-    default: [],
-  },
+  teams: [teamSchema],
   favorites: [{
     type: Schema.Types.ObjectId,
-    ref: 'Character',
+    ref: 'Char',
   }]
 }, {
   timestamps: true
@@ -46,5 +41,4 @@ const Profile = mongoose.model('Profile', profileSchema)
 
 export {
   Profile,
-  Team
 }

@@ -1,4 +1,4 @@
-import { Profile, Team } from "../models/profile.js"
+import { Profile } from "../models/profile.js"
 import { Char } from "../models/character.js"
 
 function show(req, res) {
@@ -44,18 +44,18 @@ function createTeam(req, res) {
   ])
     .then((characters) => {
       // Create the team object with the given name and characters
-      const team = new Team({
+      const newTeam = {
         name: name,
         createdBy: createdBy._id,
         characters: characters,
-      })
-      return team.save()
+      }
+    newTeam.save()
     })
   // Save the team object to the database
-    .then((savedTeam) => {
+    .then((newTeam) => {
       // Update the user's profile to include the new team
       Profile.findByIdAndUpdate(req.user.profile._id, {
-        $push: { teams: savedTeam }
+        $push: { teams: newTeam }
       })
         .then(() => {
           // Redirect to the user's profile page
@@ -77,36 +77,30 @@ function addTeam(req, res) {
   const { name, char1, char2, char3, char4 } = req.body
   const createdBy = req.user.profile
 
-  const newTeam = new Team({
+  const newTeam = {
     name,
     characters: [char1, char2, char3, char4],
     createdBy: createdBy._id,
+  }
+  Profile.findByIdAndUpdate(
+    req.user.profile._id,
+    { $push: { teams: newTeam } },
+    { new: true }
+  ).then(() => {
+    res.redirect('/profiles/profile')
   })
-  newTeam.save()
-    .then((team) => {
-      return Profile.findOneAndUpdate(
-        { user: userId },
-        { $push: { teams: team._id } },
-        { new: true })
-        .populate('teams')
-    })
-    .then((profile) => {
-      res.redirect('/profiles/profile')
-    })
-    .catch(err => {
-      console.log(err)
-      res.redirect('/profiles/profile')
-    })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/profiles/profile')
+  })
 }
 
 function getTeam(req, res) {
-  Team.find({})
-    .populate({ path: 'createdBy', select: 'name' })
-    .then((teams) => {
+  Profile.findById(req.user.profile._id)
+    .then((profile) => {
       res.render('profiles/teams', {
-        teams,
+        teams: profile.teams,
         title: 'Teams',
-        req
       })
     })
     .catch(err => {
@@ -119,12 +113,11 @@ function showTeam(req, res) {
   const teamId = req.params.teamId
   const name = req.user.profile.name
   
-  Team.findById(teamId)
-  .populate({ path: 'createdBy', select: 'name' })
-  .populate({ path: 'characters', model: 'Char' })
-  .then(team => {
+  Profile.findById(req.user.profile._id)
+  .populate('teams.characters')
+  .then(profile => {
     res.render('profiles/show-team', {
-      team,
+      team: profile.teams.id(teamId),
       name,
       title: 'Team Details'
     })
@@ -134,12 +127,15 @@ function showTeam(req, res) {
     res.redirect('/profiles/teams')
   })
 }
+
 function edit(req, res) {
-  Team.findById(req.params.teamId)
-  .then(team => {
+  const teamId = req.params.teamId
+  Profile.findById(req.user.profile._id)
+  .populate('teams.characters')
+  .then(profile => {
       res.render('profiles/edit-team',{
         title: 'Edit Team',
-        team,
+        team: profile.teams.id(teamId),
       })
   })
   .catch(err => {
@@ -147,6 +143,7 @@ function edit(req, res) {
     res.redirect('/profiles/teams')
   })
 }
+
 export {
   index,
   createTeam,
