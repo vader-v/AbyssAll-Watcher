@@ -188,6 +188,24 @@ function updateTeam(req, res) {
     })
 }
 
+function deleteTeam(req, res) {
+  const teamId = req.body.teamId
+  const userId = req.user.profile._id
+
+  Profile.findOneAndUpdate(
+    { _id: userId },
+    { $pull: { teams: { _id: teamId } } },
+    { new: true }
+  )
+  .then(() => {
+    res.redirect('/profiles/teams')
+  })
+  .catch((err) => {
+    console.log(err)
+    res.redirect('/profiles/teams')
+  })
+}
+
 
 
 
@@ -200,4 +218,5 @@ export {
   showTeam,
   edit,
   updateTeam,
+  deleteTeam as delete,
 }

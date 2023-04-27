@@ -7,6 +7,10 @@
     <% teams.forEach((team) => { %>
       <li>
         <a href="./teams/<%= team._id %>"><%= team.name %></a>
+        <form action="/profiles/teams/<%= team._id %>?_method=DELETE" method="POST">
+          <button type="submit">X</button>
+          <input type="hidden" name="teamId" value="<%= team._id %>">
+        </form>
       </li>
     <% }) %>
   </ul>
