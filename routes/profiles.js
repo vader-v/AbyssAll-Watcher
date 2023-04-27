@@ -12,6 +12,7 @@ router.post('/profile', isLoggedIn, profCtrl.addTeam)
 router.get('/teams', isLoggedIn, profCtrl.getTeam)
 router.get('/teams/:teamId', isLoggedIn, profCtrl.showTeam)
 router.get('/teams/:teamId/edit-team', isLoggedIn, profCtrl.edit)
+router.put('/teams/:teamId/edit-team', isLoggedIn, profCtrl.updateTeam)
 
 export {
   router

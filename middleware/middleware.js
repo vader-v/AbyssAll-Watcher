@@ -6,16 +6,6 @@ function passDataToView(req, res, next) {
   next()
 }
 
-function loadCharacters(req, res, next) {
-  Char.find({}, (err, characters) => {
-    if (err) {
-      return next(err)
-    }
-    res.locals.characters = characters
-    next()
-  })
-}
-
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next()
   res.redirect('/')
@@ -24,5 +14,4 @@ function isLoggedIn(req, res, next) {
 export {
   passDataToView,
   isLoggedIn,
-  loadCharacters
 }

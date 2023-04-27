@@ -1,6 +1,7 @@
 import { Profile } from "../models/profile.js"
 import { Char } from "../models/character.js"
 
+
 function show(req, res) {
   Char.find({})
   .then(characters => {
@@ -49,7 +50,6 @@ function createTeam(req, res) {
         createdBy,
         characters: characters.map((char) => char._id),
       }
-      newTeam.populate("characters").execPopulate()
     newTeam.save()
     })
   // Save the team object to the database
@@ -111,6 +111,7 @@ function getTeam(req, res) {
       res.redirect('/profiles/teams')
     })
 }
+
 //show team details through /:teamId
 function showTeam(req, res) {
   const teamId = req.params.teamId
@@ -133,30 +134,61 @@ function showTeam(req, res) {
 
 
 function edit(req, res) {
-  const teamId = req.params.teamId;
-  const name = req.user.profile.name;
+  const teamId = req.params.teamId
+  const name = req.user.profile.name
   Profile.findById(req.user.profile._id)
-    .populate({
-      path: 'teams.characters',
-      model: 'Char'
-    })
-    .populate('teams.createdBy')
-    .then(profile => {
-      // Retrieve all characters from the database
-      Char.find().then(characters => {
-        res.render('profiles/edit-team',{
-          title: 'Edit Team',
-          team: profile.teams.id(teamId),
-          name,
-          characters, // Pass all characters to the edit view
-        })
+  .populate({
+    path: 'teams.characters',
+    model: 'Char'
+  })
+  .populate('teams.createdBy')
+  .then(profile => {
+    // Retrieve all characters from the database
+    Char.find()
+    .then(characters => {
+      res.render('profiles/edit-team',{
+        title: 'Edit Team',
+        team: profile.teams.id(teamId),
+        name,
+        characters, // Pass all characters to the edit view
       })
     })
-    .catch(err => {
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/profiles/teams')
+  })
+}
+
+function updateTeam(req, res) {
+  const teamId = req.params.teamId
+  const name = req.body.name
+  const char1 = req.body.char1
+  const char2 = req.body.char2
+  const char3 = req.body.char3
+  const char4 = req.body.char4
+
+  Profile.findById(req.user.profile._id)
+    .then((profile) => {
+      const team = profile.teams.id(teamId)
+
+      // Update the team object with the new values
+      team.name = name
+      team.characters = [char1, char2, char3, char4]
+
+      // Save the updated profile
+      profile.save()
+    })
+    .then(() => {
+      res.redirect(`/profiles/teams/${teamId}`)
+    })
+    .catch((err) => {
       console.log(err)
       res.redirect('/profiles/teams')
     })
 }
+
+
 
 
 export {
@@ -167,4 +199,5 @@ export {
   getTeam,
   showTeam,
   edit,
+  updateTeam,
 }
