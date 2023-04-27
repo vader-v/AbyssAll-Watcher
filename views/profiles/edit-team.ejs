@@ -19,7 +19,7 @@
           <option value="<%= char._id %>"><%= char.name %></option>
         <% }) %>
       </select>
-      <select name="char2" id="char2Dropdown">
+      <select name="char2" id="char2">
         <option value=""></option>
         <% chars.forEach((char) => { %>
           <option value="<%= char._id %>"><%= char.name %></option>
@@ -33,7 +33,7 @@
       </select>
       <select name="char4" id="char4Dropdown">
         <option value=""></option>
-        <% chars.forEach((char) => { %>
+        <% characters.forEach((char) => { %>
           <option value="<%= char._id %>"><%= char.name %></option>
         <% }) %>
       </select>
