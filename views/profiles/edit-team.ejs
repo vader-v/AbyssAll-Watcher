@@ -8,5 +8,36 @@
   <h1>hi</h1>
   <h1>Edit Team</h1>
 <%= team.name %>
+<h1>Create team</h1>
+    <form action="/teams/<%= team._id %>?_method=PUT" method="POST">
+      <label for="name">Team Name:</label>
+      <input type="text" id="name" name="name" autocomplete="off" value="<%= team.name %>">
+
+      <select name="char1" id="char1">
+        <option value=""></option>
+        <% chars.forEach((char) => { %>
+          <option value="<%= char._id %>"><%= char.name %></option>
+        <% }) %>
+      </select>
+      <select name="char2" id="char2Dropdown">
+        <option value=""></option>
+        <% chars.forEach((char) => { %>
+          <option value="<%= char._id %>"><%= char.name %></option>
+        <% }) %>
+      </select>
+      <select name="char3" id="char3Dropdown">
+        <option value=""></option>
+        <% chars.forEach((char) => { %>
+          <option value="<%= char._id %>"><%= char.name %></option>
+        <% }) %>
+      </select>
+      <select name="char4" id="char4Dropdown">
+        <option value=""></option>
+        <% chars.forEach((char) => { %>
+          <option value="<%= char._id %>"><%= char.name %></option>
+        <% }) %>
+      </select>
+      <button type="submit">Edit Team</button>
+    </form>
 </main>
   <%- include('../partials/footer') %>

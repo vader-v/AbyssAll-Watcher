@@ -46,7 +46,7 @@ function createTeam(req, res) {
       // Create the team object with the given name and characters
       const newTeam = {
         name: name,
-        createdBy: createdBy._id,
+        createdBy,
         characters: characters,
       }
     newTeam.save()
@@ -54,9 +54,11 @@ function createTeam(req, res) {
   // Save the team object to the database
     .then((newTeam) => {
       // Update the user's profile to include the new team
-      Profile.findByIdAndUpdate(req.user.profile._id, {
-        $push: { teams: newTeam }
-      })
+      Profile.findByIdAndUpdate(
+        createdBy._id, 
+        { $push: { teams: newTeam } },
+        { new: true }
+        )
         .then(() => {
           // Redirect to the user's profile page
           res.redirect('/profiles/profile')
@@ -97,7 +99,7 @@ function addTeam(req, res) {
 
 function getTeam(req, res) {
   Profile.findById(req.user.profile._id)
-    .then((profile) => {
+  .then((profile) => {
       res.render('profiles/teams', {
         teams: profile.teams,
         title: 'Teams',
@@ -115,6 +117,7 @@ function showTeam(req, res) {
   
   Profile.findById(req.user.profile._id)
   .populate('teams.characters')
+  .populate('teams.createdBy')
   .then(profile => {
     res.render('profiles/show-team', {
       team: profile.teams.id(teamId),
@@ -129,6 +132,7 @@ function showTeam(req, res) {
 }
 
 function edit(req, res) {
+  console.log('characters')
   const teamId = req.params.teamId
   Profile.findById(req.user.profile._id)
   .populate('teams.characters')
