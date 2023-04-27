@@ -114,7 +114,6 @@ function getTeam(req, res) {
 function showTeam(req, res) {
   const teamId = req.params.teamId
   const name = req.user.profile.name
-  
   Profile.findById(req.user.profile._id)
   .populate('teams.characters')
   .populate('teams.createdBy')
@@ -131,19 +130,18 @@ function showTeam(req, res) {
   })
 }
 
+
 function edit(req, res) {
   const teamId = req.params.teamId
-
-  Profile.findByIdAndUpdate(
-    req.user.profie.teams._id,
-    { $push: { teams: newTeam } },
-    { new: true }
-  )
+  const name = req.user.profile.name
+  Profile.findById(req.user.profile._id)
   .populate('teams.characters')
+  .populate('teams.createdBy')
   .then(profile => {
       res.render('profiles/edit-team',{
         title: 'Edit Team',
         team: profile.teams.id(teamId),
+        name,
       })
   })
   .catch(err => {

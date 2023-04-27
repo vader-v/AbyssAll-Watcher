@@ -14,27 +14,27 @@
       <input type="text" id="name" name="name" autocomplete="off" value="<%= team.name %>">
 
       <select name="char1" id="char1">
-        <option value=""></option>
-        <% chars.forEach((char) => { %>
-          <option value="<%= char._id %>"><%= char.name %></option>
+        <option value="<%= team.character %>"></option>
+        <% team.characters.forEach((character) => { %>
+          <option value="<%= character %>"><%= character.name %></option>
         <% }) %>
       </select>
       <select name="char2" id="char2">
-        <option value=""></option>
-        <% chars.forEach((char) => { %>
+        <option value="<%= team.character %>"></option>
+        <% team.characters.forEach((character) => { %>
+          <option value="<%= character %>"><%= character.name %></option>
+        <% }) %>
+      </select>
+      <select name="char3" id="char3">
+        <option value="<%= team.character %>"></option>
+        <% team.characters.forEach((char) => { %>
           <option value="<%= char._id %>"><%= char.name %></option>
         <% }) %>
       </select>
-      <select name="char3" id="char3Dropdown">
-        <option value=""></option>
-        <% chars.forEach((char) => { %>
-          <option value="<%= char._id %>"><%= char.name %></option>
-        <% }) %>
-      </select>
-      <select name="char4" id="char4Dropdown">
-        <option value=""></option>
-        <% characters.forEach((char) => { %>
-          <option value="<%= char._id %>"><%= char.name %></option>
+      <select name="char4" id="char4">
+        <option value="<%= team.character %>"></option>
+        <% team.characters.forEach((character) => { %>
+          <option value="<%= character %>"><%= character.name %></option>
         <% }) %>
       </select>
       <button type="submit">Edit Team</button>
