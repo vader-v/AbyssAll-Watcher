@@ -29,10 +29,6 @@ const profileSchema = new Schema({
     ref: 'Char'
   }],
   teams: [teamSchema],
-  favorites: [{
-    type: Schema.Types.ObjectId,
-    ref: 'Char',
-  }]
 }, {
   timestamps: true
 })

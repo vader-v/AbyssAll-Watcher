@@ -4,7 +4,7 @@ _A Genshin-Impact Team Builder/ Social application_
 AbyssAll Watcher is an application built for Genshin Impact users. As a daily Genshin Impact player one might have more than 25 teams that they want to keep saved at a given time, yet the game itself will only allow 10 slots. I've taken it upon myself to supply the user base with a helpful application meant to assist in Spiral Abyss Content. When comparing the new state of the abyss to your current teams, you may find yourself running back and forth through menus to look at all of your teams. Look no further since all of your created teams will be stored for easy access.
 
 ## Use my app [here](https://abyssall-watcher.fly.dev/)
-
+## Trello planning materials [here](https://trello.com/b/Trwo7Dvd/abyssall-watcher-crud-unit-2-project)
 ![Alt text](/public/createteam.png)
 ![Alt text](/public/allteams.png)
 ![Alt text](/public/editteam.png)
