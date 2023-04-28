@@ -29,6 +29,7 @@ function create(req, res) {
     res.redirect('/new-character')
   })
 }
+
 function show(req, res) {
   Character.findById(req.params.characterId)
   .then((character) => {
@@ -42,6 +43,7 @@ function show(req, res) {
     res.redirect('/characters')
   })
 }
+
 export {
   index,
   create,

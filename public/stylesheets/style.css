@@ -20,9 +20,11 @@ body {
     'Helvetica Neue', sans-serif;
   margin: 0;
 }
+
 nav button{
   margin-left: 40px;
 }
+
 nav {
   justify-content: space-between;
   background-color: #37486d;
@@ -60,9 +62,11 @@ button:hover {
   box-shadow: 1px 1px #ffd92f, 2px 2px #ffd92f, 3px 3px #ffd92f;
   transform: translateX(-3px);
 }
+
 main {
   text-decoration: wavy;
 }
+
 .characters {
   display: flex;
   flex-wrap: wrap;

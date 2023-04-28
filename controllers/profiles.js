@@ -50,19 +50,19 @@ function createTeam(req, res) {
     }
   newTeam.save()
   })
-// Save the team object to the database
+  // Save the team object to the database
   .then((newTeam) => {
     // Update the user's profile to include the new team
     Profile.findByIdAndUpdate(
       { $push: { teams: newTeam._id } },
       { new: true }
-      )
-    })
-      .then(() => {
+    )
+  })
+    .then(() => {
       // Redirect to the user's profile page
       res.redirect('/profiles/profile')
     })
-      .catch((err) => {
+    .catch((err) => {
       console.log(err)
       res.redirect('/profiles/profile')
     })
@@ -82,7 +82,8 @@ function addTeam(req, res) {
     req.user.profile._id,
     { $push: { teams: newTeam } },
     { new: true }
-  ).then(() => {
+  )
+  .then(() => {
     res.redirect('/profiles/teams')
   })
   .catch(err => {

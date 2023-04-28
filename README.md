@@ -41,6 +41,8 @@ _Character Data_
 
 Genshin Impact - Hoyoverse (Est. 2011) https://www.hoyoverse.com/
 
+Genshin Fan-Wiki - https://genshin-impact.fandom.com/wiki/Genshin_Impact_Wiki
+
 _Stylesheet References_
 
 CSS wand - https://www.csswand.dev/

@@ -1,7 +1,8 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<h1>Team Name: <%= team.name %></h1>
+<main>
+  <h1>Team Name: <%= team.name %></h1>
   <div class="form-background">
     <h3>Characters:</h3>
       <ul>
@@ -9,10 +10,10 @@
           <li><%= character.name %></li>
         <% } %>
       </ul>
-    <button>
-      <a href="../teams/<%= team._id %>/edit-team">Edit Team</a>
-    </button>
+      <a href="../teams/<%= team._id %>/edit-team">
+        <button>Edit Team</button>
+      </a>
   </div>
 
-
+</main>
 <%- include('../partials/footer') %>
