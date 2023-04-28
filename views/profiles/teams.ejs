@@ -3,7 +3,7 @@
 
 <main>
   <h1>Teams</h1>
-  <div>
+  <div class="form-background">
 
     <table>
       <thead>
@@ -11,7 +11,10 @@
         <% teams.forEach((team) => { %>
           <tr>
             <td>
-              <a href="./teams/<%= team._id %>"><%= team.name %>
+              <a href="./teams/<%= team._id %>">
+                <button type="submit">
+                  <%= team.name %>
+                </button>
               </td>
               <td>
                 <form action="/profiles/teams/<%= team._id %>?_method=DELETE" method="POST">

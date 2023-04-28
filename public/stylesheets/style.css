@@ -57,7 +57,9 @@ button:hover {
   box-shadow: 1px 1px #ffd92f, 2px 2px #ffd92f, 3px 3px #ffd92f;
   transform: translateX(-3px);
 }
-
+main {
+  text-decoration: wavy;
+}
 .characters {
   display: flex;
   flex-wrap: wrap;
@@ -106,14 +108,20 @@ label {
   display: inline-block;
   margin-bottom: .5rem;
 }
+
 input[type="text"], select {
   padding: .375rem .75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
   color: #f6f6f6;
-  background-color: grey;
-  background-clip: padding-box;
+  background-color: #1f1738;
   border: 1px solid #ced4da;
   border-radius: .25rem;
+}
+
+.form-background{
+  background-color: rgb(16, 16, 16);
+  padding: .375rem .75rem;
+  border: 5px solid rgb(71, 1, 71);
 }

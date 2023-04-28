@@ -1,4 +1,3 @@
-import { Char } from "../models/character.js"
 
 function passDataToView(req, res, next) {
   res.locals.user = req.user ? req.user : null

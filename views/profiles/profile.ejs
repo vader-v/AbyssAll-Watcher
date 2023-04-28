@@ -11,29 +11,30 @@
       />
     </div>
   <% } %>
-  <div> 
-    <h1>Teams</h1>
-
+  <div class="form-background">
     <table>
-<thead>
-
-  <% teams.forEach((team) => { %>
-  <tr>
-    <td>
-      <a href="./teams/<%= team._id %>"><%= team.name %>
-    </td>
-      <td>
+      <thead>
+        <h1>Teams</h1>
+        <% teams.forEach((team) => { %>
+          <tr>
+            <td>
+              <a href="./teams/<%= team._id %>">
+                <button>
+                  <%= team.name %>
+                </button>
+              </a>
+              </td>
+              <td>
         <form action="/profiles/teams/<%= team._id %>?_method=DELETE" method="POST">
-        <button type="submit">X</button>
-        <input type="hidden" name="teamId" value="<%= team._id %>">
+          <button type="submit">X</button>
+          <input type="hidden" name="teamId" value="<%= team._id %>">
         </form>
-    </td>
-    </a>
+      </td>
   </tr>
   <% }) %>
-</thead>
-      </table>
-    </div>
-  </main>
+  </thead>
+  </table>
+  </div>
+</main>
 
 <%- include('../partials/footer') %>

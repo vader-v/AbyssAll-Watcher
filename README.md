@@ -34,3 +34,9 @@ AbyssAll Watcher is a Javascript, EJS, CSS, and NodeJS based application, that r
 _Character Data_
 
 Genshin Impact - Hoyoverse (Est. 2011) https://www.hoyoverse.com/
+
+_Stylesheet References_
+
+CSS wand - https://www.csswand.dev/
+
+CSS tricks - https://css-tricks.com/almanac/
