@@ -2,25 +2,21 @@
 <%- include('../partials/nav') %>
 <!-- all chars pg -->
 <body>
-
   <h1>Genshin Impact Characters</h1>
-
   <section>
     <h1>All the Characters!</h1>
-      <div class="character-grid">
+    <div class="character-grid">
       <h3>Click the links to see details on the character!</h3>
-        <ul>
-          <% characters.forEach(character => { %>
-            <li class="character-card">
-            <h3 class="character-name">
+      <ul>
+        <% characters.forEach(character => { %>
+        <li class="character-card">
+          <h3 class="character-name">
             <a href="/characters/<%= character._id %>"><%= character.name %></a>
-            </h3>
-            </li>
-          <% }) %>
-        </ul>
-      </div>
+          </h3>
+        </li>
+        <% }) %>
+      </ul>
+    </div>
   </section>
 </body>
-
-
 <%- include('../partials/footer') %>

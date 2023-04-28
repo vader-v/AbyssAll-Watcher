@@ -1,32 +1,29 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
-
 <main>
   <h1>Teams</h1>
   <div class="form-background">
     <table>
       <thead>
-      <% teams.forEach((team) => { %>
+        <% teams.forEach((team) => { %>
         <tr>
-        <td>
-          <a href="./teams/<%= team._id %>">
+          <td>
+            <a href="./teams/<%= team._id %>">
             <button type="submit">
-              <%= team.name %>
+            <%= team.name %>
             </button>
-          </a>
-        </td>
-        <td>
-          <form action="/profiles/teams/<%= team._id %>?_method=DELETE" method="POST">
-            <button type="submit">X</button>
-            <input type="hidden" name="teamId" value="<%= team._id %>">
-          </form>
-        </td>
+            </a>
+          </td>
+          <td>
+            <form action="/profiles/teams/<%= team._id %>?_method=DELETE" method="POST">
+              <button type="submit">X</button>
+              <input type="hidden" name="teamId" value="<%= team._id %>">
+            </form>
+          </td>
         </tr>
-      <% }) %>
+        <% }) %>
       </thead>
     </table>
   </div>
-
 </main>
-
 <%- include('../partials/footer') %>

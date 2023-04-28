@@ -1,24 +1,23 @@
-  <% if (!user) { %>
-    <script defer src="https://accounts.google.com/gsi/client"></script>
+<% if (!user) { %>
+  <script defer src="https://accounts.google.com/gsi/client"></script>
   <% } %>
-</head>
-<body>
-  <nav>
-    <a href="/characters">
-        <button type="submit">
-          All Characters!
+  </head>
+  <body>
+    <nav>
+      <a href="/characters">
+      <button type="submit">
+      All Characters!
       </button>
       </a>
-    <% if (user) { %>
+      <% if (user) { %>
       <a href="/profiles/team-creator">
-        <button type="submit">Create a Team!</button>
+      <button type="submit">Create a Team!</button>
       </a>
       <a href="/profiles/teams">
-        
-        <button type="submit">View Teams!</button>
+      <button type="submit">View Teams!</button>
       </a>
       <a href="/auth/logout" class="right">
-        <button type="submit">Logout</button>
+      <button type="submit">Logout</button>
       </a>
       <a href="/profiles/profile"><button type="submit">Profile</button></a>
       <% } else { %>
@@ -28,7 +27,7 @@
         data-login_uri="/auth/google"
         data-auto_prompt="false"
         data-prompt_parent_id="g_id_onload"
-      ></div>
+        ></div>
       <div 
         class="g_id_signin right"
         data-type="standard"
@@ -37,6 +36,6 @@
         data-text="sign_in_with"
         data-shape="rectangular"
         data-logo_alignment="left"
-      ></div>
-    <% } %>
-  </nav>
+        ></div>
+      <% } %>
+    </nav>
