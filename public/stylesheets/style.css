@@ -12,7 +12,8 @@ html {
 }
 
 body {
-  background-color: #1a1a1a;
+
+  background-color: #1f1738;
   color: #f6f6f6;
   /* Use a system font, if none are available use any found sans-sarif font */
   font-family: system-ui, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 
@@ -21,8 +22,8 @@ body {
 }
 
 nav {
-  background-color: #f6f6f6;
-  color: #1a1a1a;
+  background-color: #37486d;
+  color: #000000;
   display: flex;
   align-items: center;
   padding: 10px;
@@ -38,4 +39,56 @@ main {
 
 .right {
   margin-left: auto;
+}
+
+button {
+  color: #ffd92f;
+  background-color: #292D3E;
+  border: 1px solid #ffd92f;
+  border-radius: 4px;
+  padding: 0 15px;
+  cursor: pointer;
+  height: 32px;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  box-shadow: 1px 1px #ffd92f, 2px 2px #ffd92f, 3px 3px #ffd92f;
+  transform: translateX(-3px);
+}
+
+.characters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.character-grid > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+.character-card {
+  width: 300px;
+  margin: 10px;
+}
+
+a{
+  color: rgb(248, 157, 71);
+}
+.character-card img {
+  max-width: 100%;
+  height: auto;
+}
+
+.character-name {
+  text-align: center;
 }

@@ -9,7 +9,10 @@ const charSchema = new Schema({
   },
   cardImg: {
     type: String
-  }
+  },
+  details: {
+    type: String
+  },
 }, {
   timestamps: true
 })

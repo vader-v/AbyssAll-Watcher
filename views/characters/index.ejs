@@ -4,9 +4,6 @@
 <body>
 <h1>Genshin Impact Characters</h1>
 
-  <!-- <form method="get" action="/characters/new">
-    <button type="submit">Add New Character</button>
-  </form> -->
     <section>
       <h2>Add a Character!</h2>
         <form action="/characters" method="POST">
@@ -18,21 +15,25 @@
           </div>
           <div>
             <label for="image">Image URL:</label>
-      <input type="url" id="image" name="image">
+      <input type="image" id="cardImage" name="cardImage">
           </div>
           <button type="submit">Add Character</button>
-      <h1>All the Characters!</h1>
-      <ul>
-        <% characters.forEach(char => { %>
-          <li>
-            🧑
-            <a href="/characters/<%= char._id %>"><%= char.name %></a>
-            
-          </li>
-        <% }) %>
-      </ul>
-          
         </form>
+      <h1>All the Characters!</h1>
+      <div class="character-grid">
+
+        <ul>
+          <% characters.forEach(char => { %>
+            <li class="character-card">
+
+              <h3 class="character-name">
+                <a href="/characters/<%= char._id %>"><%= char.name %></a>
+              </h3>
+            </li>
+            <% }) %>
+          </ul>
+        </div>
+          
     </section>
   </body>
   
