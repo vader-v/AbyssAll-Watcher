@@ -2,19 +2,17 @@
 <%- include('../partials/nav') %>
 
 <h1>Team Name: <%= team.name %></h1>
-<h3>Created By: <%= team.createdBy.name %></h3>
-<div class="form-background">
-<h3>Characters:</h3>
-  <ul>
-    <% for (let char of team.characters) { %>
-      <li><%= char.name %></li>
-      <% } %>
-    </ul>
+  <div class="form-background">
+    <h3>Characters:</h3>
+      <ul>
+        <% for (let character of team.characters) { %>
+          <li><%= character.name %></li>
+        <% } %>
+      </ul>
     <button>
       <a href="../teams/<%= team._id %>/edit-team">Edit Team</a>
     </button>
   </div>
-
 
 
 <%- include('../partials/footer') %>

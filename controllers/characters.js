@@ -1,7 +1,7 @@
-import { Char } from "../models/character.js"
+import { Character } from "../models/character.js"
 
 function index(req, res) {
-  Char.find({})
+  Character.find({})
   .then((characters) => {
     res.render('characters/index', {
       characters,
@@ -14,19 +14,15 @@ function index(req, res) {
   })
 }
 
-function newChar(req, res) {
-  res.render('characters/new')
-}
-
 function create(req, res) {
-  const newCharacter = new Char({
+  const newCharacter = new Character({
     name: req.body.name,
     cardImg: req.body.image,
   })
 
   newCharacter.save()
-    .then((char) => {
-      res.redirect(`/characters/${char._id}`)
+    .then((character) => {
+      res.redirect(`/characters/${character._id}`)
     })
   .catch(err => {
     console.log(err)
@@ -34,10 +30,10 @@ function create(req, res) {
   })
 }
 function show(req, res) {
-  Char.findById(req.params.charId)
-  .then((char) => {
+  Character.findById(req.params.characterId)
+  .then((character) => {
     res.render('characters/show', {
-  char: char,
+  character: character,
   title: 'Character Details'
 })
   })
@@ -49,6 +45,5 @@ function show(req, res) {
 export {
   index,
   create,
-  newChar as new,
   show
 }

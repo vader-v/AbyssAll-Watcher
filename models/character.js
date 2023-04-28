@@ -2,7 +2,7 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
-const charSchema = new Schema({
+const characterSchema = new Schema({
   name:  {
     type: String,
     required: true,
@@ -17,8 +17,8 @@ const charSchema = new Schema({
   timestamps: true
 })
 
-const Char = mongoose.model('Char', charSchema)
+const Character = mongoose.model('Character', characterSchema)
 
 export {
-  Char
+  Character
 }

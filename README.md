@@ -23,7 +23,7 @@ First, you should direct yourself to the create-team page via the nav bar, creat
 
 ## Technologies used
 
-AbyssAll Watcher is a Javascript, EJS, CSS, and NodeJS-based application, that relies on Mongoose data structuring to achieve full functionality. This application is run via the Fly.io deployment service and is updated regularly via Github.
+AbyssAll Watcher is a JavaScript, EJS, CSS, Express and NodeJS based application that relies on Mongoose data structuring and the MongoDB database to achieve full functionality. This application is run via the Fly.io deployment service and is updated regularly via Github as well as User authorization via Google OAuth and Passport.
 
 ## References used
 

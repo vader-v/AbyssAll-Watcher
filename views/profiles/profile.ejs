@@ -1,40 +1,45 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
+
 <!-- display user google pfp, user fav chars array, and all users created teams -->
+
 <main>
+
   <h1>hello, <%= profile ? profile.name : "traveller" %> Welcome to your profile.</h1>
   <% if (profile?.avatar) { %>
     <div>
-      <img
-        src="<%= profile.avatar %>"
-        alt="<%= profile.name %> avatar"
-      />
+    <img
+    src="<%= profile.avatar %>"
+    alt="<%= profile.name %> avatar"
+    />
     </div>
   <% } %>
+
   <div class="form-background">
-    <table>
-      <thead>
-        <h1>Teams</h1>
-        <% teams.forEach((team) => { %>
-          <tr>
-            <td>
-              <a href="./teams/<%= team._id %>">
-                <button>
-                  <%= team.name %>
-                </button>
-              </a>
-              </td>
-              <td>
-        <form action="/profiles/teams/<%= team._id %>?_method=DELETE" method="POST">
-          <button type="submit">X</button>
-          <input type="hidden" name="teamId" value="<%= team._id %>">
-        </form>
-      </td>
-  </tr>
-  <% }) %>
-  </thead>
+  <table>
+    <thead>
+    <h1>Teams</h1>
+      <% teams.forEach((team) => { %>
+        <tr>
+          <td>
+            <a href="./teams/<%= team._id %>">
+              <button>
+              <%= team.name %>
+              </button>
+            </a>
+          </td>
+          <td>
+            <form action="/profiles/teams/<%= team._id %>?_method=DELETE" method="POST">
+              <button type="submit">X</button>
+              <input type="hidden" name="teamId" value="<%= team._id %>">
+            </form>
+          </td>
+        </tr>
+      <% }) %>
+    </thead>
   </table>
   </div>
+
 </main>
 
 <%- include('../partials/footer') %>

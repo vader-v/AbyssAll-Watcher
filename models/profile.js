@@ -8,13 +8,9 @@ const teamSchema = new Schema({
     required: true,
     default: "New Team",
   },
-  createdBy: {
-    type: Schema.Types.ObjectId,  
-    ref: 'Profile',
-  },
   characters: [{
     type: Schema.Types.ObjectId,
-    ref: 'Char'
+    ref: 'Character'
   }]
 }, {
   timestamps: true
@@ -26,7 +22,7 @@ const profileSchema = new Schema({
   avatar: String,
   characters: [{ 
     type: Schema.Types.ObjectId,
-    ref: 'Char'
+    ref: 'Character'
   }],
   teams: [teamSchema],
 }, {
