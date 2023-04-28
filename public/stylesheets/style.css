@@ -12,7 +12,7 @@ html {
 }
 
 body {
-
+  text-align: center;
   background-color: #1f1738;
   color: #f6f6f6;
   /* Use a system font, if none are available use any found sans-sarif font */
@@ -81,9 +81,14 @@ button:hover {
   margin: 10px;
 }
 
+li {
+  list-style-type: none;
+}
+
 a{
   color: rgb(248, 157, 71);
 }
+
 .character-card img {
   max-width: 100%;
   height: auto;
@@ -91,4 +96,24 @@ a{
 
 .character-name {
   text-align: center;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: .5rem;
+}
+input[type="text"], select {
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #f6f6f6;
+  background-color: grey;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
 }

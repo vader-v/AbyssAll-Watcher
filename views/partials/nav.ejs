@@ -4,10 +4,19 @@
 </head>
 <body>
   <nav>
-    <a href="../characters">All Characters!</a>
+    <a href="/characters">
+        <button type="submit">
+          All Characters!
+      </button>
+      </a>
     <% if (user) { %>
-      <a href="../profiles/team-creator">Create a Team!</a>
-      <a href="../profiles/teams">View Teams!</a>
+      <a href="/profiles/team-creator">
+        <button type="submit">Create a Team!</button>
+      </a>
+      <a href="/profiles/teams">
+        
+        <button type="submit">View Teams!</button>
+      </a>
       <a href="/auth/logout" class="right">
         <button type="submit">Logout</button>
       </a>
