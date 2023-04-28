@@ -15,6 +15,7 @@ function show(req, res) {
     res.redirect('/profiles/profile')
   })
 }
+
 function index(req, res) {
   Profile.findById(req.user.profile)
   .populate('teams')
@@ -30,7 +31,6 @@ function index(req, res) {
     res.redirect('/profiles/profile')
   })
 }
-
 
 function createTeam(req, res) {
   const { name, char1, char2, char3, char4 } = req.body
@@ -74,7 +74,6 @@ function createTeam(req, res) {
       res.redirect('/profiles/profile')
     })
 }
-
 
 function addTeam(req, res) {
   const { name, char1, char2, char3, char4 } = req.body
@@ -131,7 +130,6 @@ function showTeam(req, res) {
     res.redirect('/profiles/teams')
   })
 }
-
 
 function edit(req, res) {
   const teamId = req.params.teamId
@@ -205,8 +203,6 @@ function deleteTeam(req, res) {
     res.redirect('/profiles/teams')
   })
 }
-
-
 
 
 export {

@@ -11,11 +11,18 @@
       />
     </div>
     <div>
-      <%= profile.favorites %>
+      
     </div>
   <% } %>
   <div> 
-
+    <h1>Teams</h1>
+    <ul>
+      <% teams.forEach((team) => { %>
+        <li>
+          <a href="./teams/<%= team._id %>"><%= team.name %> </a>
+        </li>
+      <% }) %>
+    </ul>
   </div>
   </main>
 
