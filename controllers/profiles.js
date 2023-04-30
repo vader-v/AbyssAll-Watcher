@@ -16,7 +16,7 @@ function newTeam(req, res) {
 		})
 }
 
-function index(req, res) {
+function show(req, res) {
 	Profile.findById(req.user.profile)
 		.populate('teams')
 		.then((profile) => {
@@ -220,7 +220,7 @@ function deleteTeam(req, res) {
 
 
 export {
-	index,
+	show,
 	createTeam,
 	newTeam as new,
 	addTeam,

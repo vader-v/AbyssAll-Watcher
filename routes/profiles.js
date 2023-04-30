@@ -4,7 +4,7 @@ import { isLoggedIn } from '../middleware/middleware.js'
 
 const router = Router()
 
-router.get('/profile', isLoggedIn, profCtrl.index)
+router.get('/profile', isLoggedIn, profCtrl.show)
 router.get('/teams/new', isLoggedIn, profCtrl.new)
 router.get('/teams', isLoggedIn, profCtrl.getTeam)
 router.get('/teams/:teamId', isLoggedIn, profCtrl.showTeam)
