@@ -11,7 +11,7 @@ router.get('/teams/:teamId', isLoggedIn, profCtrl.showTeam)
 router.get('/teams/:teamId/edit-team', isLoggedIn, profCtrl.edit)
 router.post('/teams/new', isLoggedIn, profCtrl.createTeam)
 router.post('/teams', isLoggedIn, profCtrl.addTeam)
-router.put('/teams/:teamId/edit-team', isLoggedIn, profCtrl.updateTeam)
+router.put('/teams/:teamId', isLoggedIn, profCtrl.updateTeam)
 router.delete('/teams/:teamId', profCtrl.delete)
 
 export {
