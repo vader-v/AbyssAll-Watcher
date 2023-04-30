@@ -17,9 +17,9 @@
         <label for="char1">Character 1:</label>
         <select name="char1" id="char1" >
           <% characters.forEach(function(character) { %>
-          <option value="<%= character._id %>" <% if (team.characters[0] && team.characters[0]._id.toString() === character._id.toString()) { %>selected<% } %>>
-            <%= character.name %>
-          </option>
+            <option value="<%= character._id %>" <% if (team.characters[0] && team.characters[0]._id.toString() === character._id.toString()) { %>selected<% } %>>
+              <%= character.name %>
+            </option>
           <% }) %>
         </select>
       </div>
@@ -27,9 +27,9 @@
         <label for="char2">Character 2:</label>
         <select name="char2" id="char2" >
           <% characters.forEach(function(character) { %>
-          <option value="<%= character._id %>" <% if (team.characters[1] && team.characters[1]._id.toString() === character._id.toString()) { %>selected<% } %>>
-            <%= character.name %>
-          </option>
+            <option value="<%= character._id %>" <% if (team.characters[1] && team.characters[1]._id.toString() === character._id.toString()) { %>selected<% } %>>
+              <%= character.name %>
+            </option>
           <% }) %>
         </select>
       </div>
@@ -37,9 +37,9 @@
         <label for="char3">Character 3:</label>
         <select name="char3" id="char3" >
           <% characters.forEach(function(character) { %>
-          <option value="<%= character._id %>" <% if (team.characters[2] && team.characters[2]._id.toString() === character._id.toString()) { %>selected<% } %>>
-            <%= character.name %>
-          </option>
+            <option value="<%= character._id %>" <% if (team.characters[2] && team.characters[2]._id.toString() === character._id.toString()) { %>selected<% } %>>
+              <%= character.name %>
+            </option>
           <% }) %>
         </select>
       </div>
@@ -47,9 +47,9 @@
         <label for="char4">Character 4:</label>
         <select name="char4" id="char4">
           <% characters.forEach(function(character) { %>
-          <option value="<%= character._id %>" <% if (team.characters[3] && team.characters[3]._id.toString() === character._id.toString()) { %>selected<% } %>>
-            <%= character.name %>
-          </option>
+            <option value="<%= character._id %>" <% if (team.characters[3] && team.characters[3]._id.toString() === character._id.toString()) { %>selected<% } %>>
+              <%= character.name %>
+            </option>
           <% }) %>
         </select>
       </div>

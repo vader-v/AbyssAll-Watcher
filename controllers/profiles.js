@@ -2,10 +2,10 @@ import { Profile } from "../models/profile.js"
 import { Character } from "../models/character.js"
 
 
-function show(req, res) {
+function newTeam(req, res) {
 	Character.find({})
 		.then(characters => {
-			res.render('profiles/team-creator', {
+			res.render('profiles/new', {
 				characters,
 				title: "Team Creator",
 			})
@@ -222,7 +222,7 @@ function deleteTeam(req, res) {
 export {
 	index,
 	createTeam,
-	show,
+	newTeam as new,
 	addTeam,
 	getTeam,
 	showTeam,
