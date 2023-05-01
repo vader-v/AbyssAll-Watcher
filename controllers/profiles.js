@@ -175,7 +175,6 @@ function updateTeam(req, res) {
 	const char2 = req.body.char2
 	const char3 = req.body.char3
 	const char4 = req.body.char4
-
 	Profile.findById(req.user.profile._id)
 		.then((profile) => {
 			const team = profile.teams.id(teamId)
@@ -197,7 +196,6 @@ function updateTeam(req, res) {
 function deleteTeam(req, res) {
 	const teamId = req.body.teamId
 	const userId = req.user.profile._id
-
 	Profile.findOneAndUpdate({
 			_id: userId
 		}, {
