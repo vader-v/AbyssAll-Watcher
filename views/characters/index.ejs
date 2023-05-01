@@ -11,7 +11,9 @@
         <% characters.forEach(character => { %>
         <li class="character-card">
           <h3 class="character-name">
-            <a href="/characters/<%= character._id %>"><%= character.name %></a>
+            <a href="/characters/<%= character._id %>">
+              <%= character.name %>
+            </a>
           </h3>
         </li>
         <% }) %>
