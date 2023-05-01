@@ -8,46 +8,66 @@
       action="/profiles/teams"
       method="POST">
       <div class="form-group">
-        <label for="name">Team Name:</label>
+        <label for="name">
+          Team Name:
+        </label>
         <input type="text" id="name" name="name" autocomplete="off">
       </div>
       <div class="form-group">
-        <label for="char1">Character 1:</label>
+        <label for="char1">
+          Character 1:
+        </label>
         <select name="char1" id="char1">
           <option value=""></option>
           <% characters.forEach((char) => { %>
-            <option value="<%= char._id %>"><%= char.name %></option>
+            <option value="<%= char._id %>">
+              <%= char.name %>
+            </option>
           <% }) %>
         </select>
       </div>
       <div class="form-group">
-        <label for="char2">Character 2:</label>
+        <label for="char2">
+          Character 2:
+        </label>
         <select name="char2" id="char2">
           <option value=""></option>
           <% characters.forEach((char) => { %>
-            <option value="<%= char._id %>"><%= char.name %></option>
+            <option value="<%= char._id %>">
+              <%= char.name %>
+            </option>
           <% }) %>
         </select>
       </div>
       <div class="form-group">
-        <label for="char3">Character 3:</label>
+        <label for="char3">
+          Character 3:
+        </label>
         <select name="char3" id="char3">
           <option value=""></option>
           <% characters.forEach((char) => { %>
-            <option value="<%= char._id %>"><%= char.name %></option>
+            <option value="<%= char._id %>">
+              <%= char.name %>
+            </option>
           <% }) %>
         </select>
       </div>
       <div class="form-group">
-        <label for="char4">Character 4:</label>
+        <label for="char4">
+          Character 4:
+        </label>
         <select name="char4" id="char4">
           <option value=""></option>
           <% characters.forEach((char) => { %>
-            <option value="<%= char._id %>"><%= char.name %></option>
+            <option value="<%= char._id %>">
+              <%= char.name %>
+            </option>
           <% }) %>
         </select>
       </div>
-      <button type="submit">Add Team</button>
+      <button type="submit">
+        Add Team
+      </button>
     </form>
   </div>
 </body>
