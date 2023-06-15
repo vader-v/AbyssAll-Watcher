@@ -59,12 +59,12 @@ function createTeam(req, res) {
 		// Save the team object to the database
 		.then((newTeam) => {
 			// Update the user's profile to include the new team
-			Profile.findByIdAndUpdate({
+			Profile.findByIdAndUpdate({ 
 				$push: {
-					teams: newTeam._id
-				}
-			}, {
-				new: true
+					teams: newTeam._id 
+				} 
+			}, { 
+				new: true 
 			})
 		})
 		.then(() => {
@@ -94,14 +94,13 @@ function addTeam(req, res) {
 		characters: [char1, char2, char3, char4],
 	}
 	Profile.findByIdAndUpdate(
-			req.user.profile._id, {
-				$push: {
-					teams: newTeam
-				}
-			}, {
-				new: true
-			}
-		)
+			req.user.profile._id, { 
+				$push: { 
+					teams: newTeam 
+				}	
+			}, { 
+			new: true 
+		})
 		.then(() => {
 			res.redirect('/profiles/teams')
 		})
@@ -198,15 +197,8 @@ function deleteTeam(req, res) {
 	const userId = req.user.profile._id
 	Profile.findOneAndUpdate({
 			_id: userId
-		}, {
-			$pull: {
-				teams: {
-					_id: teamId
-				}
-			}
-		}, {
-			new: true
-		})
+		}, { $pull: { teams: { _id: teamId } }
+		}, { new: true })
 		.then(() => {
 			res.redirect('/profiles/teams')
 		})
