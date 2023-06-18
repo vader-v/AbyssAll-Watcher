@@ -14,22 +14,6 @@ function index(req, res) {
 		})
 }
 
-function create(req, res) {
-	const newCharacter = new Character({
-		name: req.body.name,
-		cardImg: req.body.image,
-	})
-
-	newCharacter.save()
-		.then((character) => {
-			res.redirect(`/characters/${character._id}`)
-		})
-		.catch(err => {
-			console.log(err)
-			res.redirect('/new-character')
-		})
-}
-
 function show(req, res) {
 	Character.findById(req.params.characterId)
 		.then((character) => {
