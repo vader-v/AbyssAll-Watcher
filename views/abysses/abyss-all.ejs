@@ -1,4 +1,35 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
-<h1>abyss-all!</h1>
+<body>
+  <h1>abyss-all!</h1>
+  <section>
+    <div class="abyss-grid">
+      <h3>Click the links to see details on each abyss!</h3>
+      <ol>
+        <% abysses.forEach(abyss => { %>
+          <div class="abyss-card-container">
+            <li class="abyss-card">
+              <a href="/abysses/<%= abyss._id %>">
+                <h3 class="abyss-title">
+                  <%= abyss.title %>
+                </h3>
+              </a>
+              <p> 
+                <%= abyss.startDate %>
+                <%= abyss.endDate %>
+              </p>
+              <p>
+                <%= abyss.content %>
+              </p>
+              <h8>
+                <%= abyss.updatedAt %>
+              </h8>
+            </li>
+          </div>
+        <% }) %>
+      </ol>
+    </div>
+  </section>
+</body>
+
 <%- include('../partials/footer') %>
