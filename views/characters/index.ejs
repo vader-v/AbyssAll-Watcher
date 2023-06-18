@@ -6,22 +6,7 @@
   <section>
     <h1>All the Characters!</h1>
     <div class="character-grid">
-      <h2>Add a Character!</h2>
-        <form action="/characters" method="POST">
-          <div>
-            <label for="name">
-              Name:
-            </label>
-            <input type="text" name="name" autocomplete="off">
-          </div>
-          <div>
-            <label for="image">Image URL:</label>
-      <input type="url" id="image" name="image">
-          </div>
-          <button type="submit">Add Character</button>
-          
-        </form>
-<h1>Characters</h1>
+    <h1>Characters</h1>
       <h3>Click the links to see details on the character!</h3>
       <ul>
         <% characters.forEach(character => { %>
