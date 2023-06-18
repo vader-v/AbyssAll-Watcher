@@ -7,8 +7,7 @@ const abyssSchema = new Schema({
   startDate: Date,
   endDate: Date,
   content: String,
-}, {
-  timestamps: true,
+  updatedAt: Date,
 })
 
 const Abyss = mongoose.model('Abyss', abyssSchema)
