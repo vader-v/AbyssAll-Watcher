@@ -17,9 +17,10 @@
                     <h3 class="character-name">
                     <%= character.name %>
                   </h3>
-                  </a>
+                </a>
               </div>
             </li>
+            <img src="/svg/<%= elementMappings[character.element] %>" alt="<%= character.element %>" class="element-icon">
           </div>
         <% }) %>
       </ul>
