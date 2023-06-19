@@ -1,33 +1,36 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 <body>
-  <h1>abyss-all!</h1>
+  <h1 class="page-title">Abyss-All!</h1>
   <section>
     <div class="abyss-grid">
       <h3>Click the links to see details on each abyss!</h3>
-      <ol>
-        <% abysses.forEach(abyss => { %>
-          <div class="abyss-card-container">
-            <li class="abyss-card">
-              <a href="/abysses/<%= abyss._id %>">
-                <h3 class="abyss-title">
-                  <%= abyss.title %>
-                </h3>
-              </a>
-              <p> 
-                <%= abyss.startDate %>
-                <%= abyss.endDate %>
-              </p>
-              <p>
-                <%= abyss.content %>
-              </p>
-              <h8>
-                <%= abyss.updatedAt %>
-              </h8>
-            </li>
-          </div>
-        <% }) %>
-      </ol>
+      <div class="abyss-card-container">
+        <ol>
+          <% abysses.forEach(abyss => { %>
+          <li class="abyss-card">
+            <a href="/abysses/<%= abyss._id %>">
+              <div class="abyss-description">
+                <h2 class="abyss-title"><%= abyss.title %></h2>
+                <div class="abyss-date">
+                  <p>
+                    Start Date: <%= abyss.startDate %>
+                    <br />
+                    End Date: <%= abyss.endDate %>
+                  </p>
+                </div>
+                <div class="abyss-content">
+                  <p><%= abyss.content %></p>
+                </div>
+              </div>
+            </a>
+            <p class="abyss-updated">
+              <h8> <%= abyss.updatedAt %> </h8>
+            </p>
+          </li>
+          <% }) %>
+        </ol>
+      </div>
     </div>
   </section>
 </body>
