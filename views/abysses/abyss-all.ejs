@@ -8,26 +8,76 @@
       <div class="abyss-card-container">
         <ol>
           <% abysses.forEach(abyss => { %>
-          <li class="abyss-card">
-            <a href="/abysses/<%= abyss._id %>">
-              <div class="abyss-description">
-                <h2 class="abyss-title"><%= abyss.title %></h2>
-                <div class="abyss-date">
-                  <p>
-                    Start Date: <%= abyss.startDate %>
-                    <br />
-                    End Date: <%= abyss.endDate %>
-                  </p>
+            <li class="abyss-card">
+              <a href="/abysses/<%= abyss._id %>">
+                <div class="abyss-description">
+                  <h2 class="abyss-title"><%= abyss.title %></h2>
+                  <div class="abyss-date">
+                    <p>
+                      Start Date: <%= abyss.startDate %>
+                      <br />
+                      End Date: <%= abyss.endDate %>
+                    </p>
+                  </div>
+                  <div class="abyss-content">
+                    <p><%= abyss.content %></p>
+                  </div>
                 </div>
-                <div class="abyss-content">
-                  <p><%= abyss.content %></p>
+              </a>
+              <div class="rating-container">
+                <div class="rating-group">
+                  <h8>Floor 9</h8>
+                  <span class="star" data-rating="1"></span>
+                  <span class="star" data-rating="2"></span>
+                  <span class="star" data-rating="3"></span>
+                  <span class="star" data-rating="1"></span>
+                  <span class="star" data-rating="2"></span>
+                  <span class="star" data-rating="3"></span>
+                  <span class="star" data-rating="1"></span>
+                  <span class="star" data-rating="2"></span>
+                  <span class="star" data-rating="3"></span>
+                </div>
+                <div class="rating-group">
+                  <h8>Floor 10</h8>
+                  <span class="star" data-rating="4"></span>
+                  <span class="star" data-rating="5"></span>
+                  <span class="star" data-rating="6"></span>
+                  <span class="star" data-rating="4"></span>
+                  <span class="star" data-rating="5"></span>
+                  <span class="star" data-rating="6"></span>
+                  <span class="star" data-rating="4"></span>
+                  <span class="star" data-rating="5"></span>
+                  <span class="star" data-rating="6"></span>
+                </div>
+                <div class="rating-group">
+                  <h8>Floor 11</h8>
+                  <span class="star" data-rating="7"></span>
+                  <span class="star" data-rating="8"></span>
+                  <span class="star" data-rating="9"></span>
+                  <span class="star" data-rating="7"></span>
+                  <span class="star" data-rating="8"></span>
+                  <span class="star" data-rating="9"></span>
+                  <span class="star" data-rating="7"></span>
+                  <span class="star" data-rating="8"></span>
+                  <span class="star" data-rating="9"></span>
+                </div>
+                <div class="rating-group">
+                  <h8>Floor 12</h8>
+                  <span class="star" data-rating="10"></span>
+                  <span class="star" data-rating="11"></span>
+                  <span class="star" data-rating="12"></span>
+                  <span class="star" data-rating="10"></span>
+                  <span class="star" data-rating="11"></span>
+                  <span class="star" data-rating="12"></span>
+                  <span class="star" data-rating="10"></span>
+                  <span class="star" data-rating="11"></span>
+                  <span class="star" data-rating="12"></span>
                 </div>
               </div>
-            </a>
-            <p class="abyss-updated">
-              <h8> <%= abyss.updatedAt %> </h8>
-            </p>
-          </li>
+              <p class="abyss-updated">
+                <h8> <%= abyss.updatedAt %> </h8>
+              </p>
+            </li>
           <% }) %>
         </ol>
       </div>
