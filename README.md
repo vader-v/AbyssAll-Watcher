@@ -5,11 +5,11 @@ AbyssAll Watcher is an application built for Genshin Impact users. As a daily Ge
 
 ## Use my app [here](https://abyssall-watcher.fly.dev/)
 ## Trello planning materials [here](https://trello.com/b/Trwo7Dvd/abyssall-watcher-crud-unit-2-project)
-![Alt text](/public/createteam.png)
-![Alt text](/public/allteams.png)
-![Alt text](/public/editteam.png)
-![Alt text](/public/characters.png)
-![Alt text](/public/profile.png)
+![Alt text](/public/images/createteam.png)
+![Alt text](/public/images/allteams.png)
+![Alt text](/public/images/editteam.png)
+![Alt text](/public/images/characters.png)
+![Alt text](/public/images/profile.png)
 
 ## How to use my app
 First, you should direct yourself to the create-team page via the nav bar, create a new name for a team, and select four characters to be included in the team. Push the create team button and you will be redirected to your profile. After a team is created you can access the View Teams page via the nav bar. You can edit and delete the teams on this page as you, please. I hope you enjoy storing your future teams with my application!
