@@ -97,6 +97,7 @@ div.character-card-container {
   align-items: center;
   justify-content: center;
   margin: 10px;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.3)!important;
 }
 
 div.character-name-container {
@@ -111,6 +112,7 @@ div.character-name-container {
   border: 2px solid #f6f6f6;
   border-radius: 8px;
   background-color: #1f1738;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.3)!important;
 }
 
 .character-card > a {
@@ -137,6 +139,7 @@ a{
   border-radius: 8px;
   margin: 5px;
   background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.3)!important;
 }
 
 .element-icon {
@@ -144,6 +147,7 @@ a{
   height: 80px;
   border: 2px solid #ffffff;
   border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.3)!important;
 }
 
 .weapon-icon {
@@ -151,6 +155,7 @@ a{
   height: 80px;
   border: 2px solid #ffffff;
   border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.3)!important;
 }
 
 .character-name {
