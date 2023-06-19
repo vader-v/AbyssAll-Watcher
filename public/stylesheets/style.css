@@ -88,6 +88,7 @@ main {
 div.character-card-container {
   border: 2px solid #f6f6f6;
   border-radius: 8px;
+  background-color: #0e0a19;
   width: 300px;
   height: 400px;
   padding: 20px;
@@ -108,6 +109,8 @@ div.character-name-container {
   height: 400px;
   margin: 10px;
   border: 2px solid #f6f6f6;
+  border-radius: 8px;
+  background-color: #1f1738;
 }
 
 .character-card > a {
@@ -123,6 +126,7 @@ li {
 
 a{
   color: rgb(248, 157, 71);
+  text-decoration: none;
 }
 
 .character-card img {
@@ -130,6 +134,7 @@ a{
   max-height: 195px;
   object-fit: cover;
   border: 5px solid #ffd92f;
+  border-radius: 8px;
   margin: 5px;
   background-color: #ffffff;
 }

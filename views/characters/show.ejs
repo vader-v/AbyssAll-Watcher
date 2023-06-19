@@ -1,9 +1,23 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 <!-- char details pg -->
-<h1>Character Details</h1>
-<h1><%= character.name %></h1>
-<h2><%= character.details %></h2>
-<img src="<%= character.cardImg %>" alt="<%= character.name %> Image"></h2>
+<body>
+  <h1>Character Details</h1>
+  <section>
+    <div class="character-grid">
+      <ul>
+      <div class="character-card-container">
+          <li class="character-card">
+            <div class="character-name-container">
+              <img src="<%= character.cardImg %>" alt="<%= character.name %>" />
+              <h1><%= character.name %></h1>
+              <h2><%= character.details %></h2>
+            </div>
+          </div>
+        </li>
+      </div>
+    </ul>
+  </section>
+</body>
 
 <%- include('../partials/footer') %>
