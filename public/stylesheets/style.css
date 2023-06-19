@@ -146,6 +146,13 @@ a{
   border-radius: 50%;
 }
 
+.weapon-icon {
+  width: 80px;
+  height: 80px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+}
+
 .character-name {
   text-align: center;
   margin-top: auto;

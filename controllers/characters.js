@@ -10,13 +10,22 @@ function index(req, res) {
 		Pyro: 'Pyro.svg',
 		Electro: 'Electro.svg'
 	}
+	const weaponMappings = {
+		Sword: 'Sword.webp',
+		Claymore: 'Claymore.webp',
+		Catalyst: 'Catalyst.webp',
+		Bow: 'Bow.webp',
+		Polearm: 'Polearm.webp'
+	}
 	Character.find({})
 		.then((characters) => {
 			res.render('characters/index', {
 				characters,
 				title: "Characters",
 				elementMappings,
-				elements: Character.schema.path('element').enumValues
+				elements: Character.schema.path('element').enumValues,
+				weaponMappings,
+				weapons: Character.schema.path('weapon').enumValues,
 			})
 		})
 		.catch(err => {
