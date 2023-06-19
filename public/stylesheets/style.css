@@ -107,6 +107,7 @@ div.character-name-container {
   width: 300px;
   height: 400px;
   margin: 10px;
+  border: 2px solid #f6f6f6;
 }
 
 .character-card > a {
@@ -125,9 +126,12 @@ a{
 }
 
 .character-card img {
-  max-width: 100%;
-  max-height: 100%;
-  object-fit: contain;
+  max-width: 195px;
+  max-height: 195px;
+  object-fit: cover;
+  border: 5px solid #ffd92f;
+  margin: 5px;
+  background-color: #ffffff;
 }
 
 .character-name {
