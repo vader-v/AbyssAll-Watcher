@@ -11,7 +11,13 @@ const teamSchema = new Schema({
   characters: [{
     type: Schema.Types.ObjectId,
     ref: 'Character'
-  }]
+  }],
+  ratings: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Rating',
+    },
+  ]
 }, {
   timestamps: true
 })

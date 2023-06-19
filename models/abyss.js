@@ -8,6 +8,10 @@ const abyssSchema = new Schema({
   endDate: Date,
   content: String,
   updatedAt: Date,
+  ratings: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Rating',
+  }],
 })
 
 const Abyss = mongoose.model('Abyss', abyssSchema)
