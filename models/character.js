@@ -13,6 +13,14 @@ const characterSchema = new Schema({
   details: {
     type: String
   },
+  element: {
+    type: String,
+    enum: ['Pyro', 'Cryo', 'Electro', 'Geo', 'Anemo', 'Dendro', 'Hydro']
+  },
+  weapon: {
+    type: String,
+    enum: ['Claymore', 'Catalyst', 'Sword', 'Polearm', 'Bow']
+  }
 }, {
   timestamps: true
 })
