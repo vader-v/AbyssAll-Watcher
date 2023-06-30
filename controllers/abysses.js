@@ -58,8 +58,35 @@ function newAbyss(req, res) {
 	}
 }
 
+function createAbyss(req, res) {
+  const { user } = req;
+
+  if (user && user.admin) {
+    const { title, startDate, endDate, content } = req.body;
+
+    const newAbyss = new Abyss({
+      title,
+      startDate,
+      endDate,
+      content,
+    });
+
+    newAbyss.save()
+      .then(() => {
+        res.redirect('/abyss-all');
+      })
+      .catch((err) => {
+        console.log(err);
+        res.redirect('/new-abyss');
+      });
+  } else {
+    res.status(403).send("Unauthorized access");
+  }
+}
+
 export {
   index,
 	rateAbyss,
-	newAbyss
+	newAbyss,
+	createAbyss
 }
