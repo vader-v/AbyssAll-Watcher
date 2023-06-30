@@ -37,7 +37,29 @@ function rateAbyss(req, res) {
     });
 }
 
+function newAbyss(req, res) {
+	const { user } = req
+
+	if (user && user.admin) {
+
+		Abyss.find({})
+		.then(abysses => {
+			res.render('abysses/new-abyss', {
+				abysses,
+				title: "Abyss Creator",
+			})
+		})
+		.catch(err => {
+			console.log(err)
+			res.redirect('/abyss-all')
+		})
+	} else {
+		res.status(403).send("Unauthorized access")
+	}
+}
+
 export {
   index,
 	rateAbyss,
+	newAbyss
 }

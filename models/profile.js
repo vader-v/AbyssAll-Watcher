@@ -31,6 +31,10 @@ const profileSchema = new Schema({
     ref: 'Character'
   }],
   teams: [teamSchema],
+  admin: {
+    type: Boolean,
+    default: false
+  }
 }, {
   timestamps: true
 })
