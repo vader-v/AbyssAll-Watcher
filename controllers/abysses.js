@@ -15,26 +15,26 @@ function index(req, res) {
 }
 
 function rateAbyss(req, res) {
-  const { abyssId } = req.params;
-  const { rating } = req.body;
+  const { abyssId } = req.params
+  const { rating } = req.body
 
   Abyss.findById(abyssId)
     .then((abyss) => {
       if (!abyss) {
-        return res.status(404).send('Abyss not found');
+        return res.status(404).send('Abyss not found')
       }
 
       // Save the rating to the abyss
-      abyss.ratings.push(rating);
-      return abyss.save();
+      abyss.ratings.push(rating)
+      return abyss.save()
     })
     .then(() => {
-      res.redirect('abysses/abyss-all');
+      res.redirect('abysses/abyss-all')
     })
     .catch((err) => {
-      console.log(err);
-      res.redirect('abysses/abyss-all');
-    });
+      console.log(err)
+      res.redirect('abysses/abyss-all')
+    })
 }
 
 function newAbyss(req, res) {
@@ -59,28 +59,28 @@ function newAbyss(req, res) {
 }
 
 function createAbyss(req, res) {
-  const { user } = req;
+  const { user } = req
 
   if (user && user.admin) {
-    const { title, startDate, endDate, content } = req.body;
+    const { title, startDate, endDate, content } = req.body
 
     const newAbyss = new Abyss({
       title,
       startDate,
       endDate,
       content,
-    });
+    })
 
     newAbyss.save()
       .then(() => {
-        res.redirect('abyss-all');
+        res.redirect('abyss-all')
       })
       .catch((err) => {
-        console.log(err);
-        res.redirect('new-abyss');
-      });
+        console.log(err)
+        res.redirect('new-abyss')
+      })
   } else {
-    res.status(403).send("Unauthorized access");
+    res.status(403).send("Unauthorized access")
   }
 }
 
@@ -105,10 +105,36 @@ function newEnemy(req, res) {
 	}
 }
 
+function createEnemy(req, res) {
+  const { user } = req
+
+  if (user && user.admin) {
+    const { name, image, type } = req.body
+
+    const newEnemy = new Enemy({
+      name,
+      image,
+      type,
+    })
+
+    newEnemy.save()
+      .then(() => {
+        res.redirect('/abysses/new-enemy')
+      })
+      .catch((err) => {
+        console.log(err)
+        res.redirect('/abysses/new-enemy')
+      })
+  } else {
+    res.status(403).send("Unauthorized access")
+  }
+}
+
 export {
   index,
 	rateAbyss,
 	newAbyss,
 	createAbyss,
-  newEnemy
+  newEnemy,
+  createEnemy,
 }

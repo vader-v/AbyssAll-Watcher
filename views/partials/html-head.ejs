@@ -58,4 +58,12 @@
           }
         })
       })
+      document.addEventListener('DOMContentLoaded', () => {
+    const toggleButton = document.getElementById('toggle-enemy-list')
+    const enemyList = document.getElementById('enemy-list')
+
+    toggleButton.addEventListener('click', () => {
+      enemyList.classList.toggle('hidden')
+    })
+  })
     </script>

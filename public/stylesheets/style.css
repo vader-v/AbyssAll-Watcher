@@ -282,3 +282,23 @@ input[type="text"], select {
 .star.active {
   background-color: yellow;
 }
+
+.hidden {
+  display: none;
+}
+
+#enemy-list {
+  margin-top: 10px;
+}
+
+.enemy-option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.enemy-option img {
+  width: 40px;
+  height: 40px;
+  margin-right: 5px;
+}
