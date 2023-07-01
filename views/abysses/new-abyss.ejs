@@ -2,7 +2,7 @@
 <%- include('../partials/nav') %>
 
 <% if (user && user.admin) { %>
-  <form action="/abysses/new-abyss" method="POST">
+  <form action="new-abyss" method="POST">
     <label for="title">Title:</label>
     <input type="text" name="title" required>
 

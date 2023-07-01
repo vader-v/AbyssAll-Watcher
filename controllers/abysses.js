@@ -29,11 +29,11 @@ function rateAbyss(req, res) {
       return abyss.save();
     })
     .then(() => {
-      res.redirect('/abyss-all');
+      res.redirect('abysses/abyss-all');
     })
     .catch((err) => {
       console.log(err);
-      res.redirect('/abyss-all');
+      res.redirect('abysses/abyss-all');
     });
 }
 
@@ -51,7 +51,7 @@ function newAbyss(req, res) {
 		})
 		.catch(err => {
 			console.log(err)
-			res.redirect('/abyss-all')
+			res.redirect('abysses/abyss-all')
 		})
 	} else {
 		res.status(403).send("Unauthorized access")
@@ -73,11 +73,11 @@ function createAbyss(req, res) {
 
     newAbyss.save()
       .then(() => {
-        res.redirect('/abyss-all');
+        res.redirect('abyss-all');
       })
       .catch((err) => {
         console.log(err);
-        res.redirect('/new-abyss');
+        res.redirect('new-abyss');
       });
   } else {
     res.status(403).send("Unauthorized access");
