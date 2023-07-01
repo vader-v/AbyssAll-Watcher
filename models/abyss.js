@@ -2,6 +2,16 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
+const enemySchema = new Schema({
+  name: String,
+  level: {
+    type: Number,
+    default: 60,
+    min: 60
+  },
+  type: String,
+})
+
 const abyssSchema = new Schema({
   title: String,
   startDate: Date,
@@ -12,6 +22,7 @@ const abyssSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Rating',
   }],
+  enemies: [enemySchema]
 })
 
 const Abyss = mongoose.model('Abyss', abyssSchema)
