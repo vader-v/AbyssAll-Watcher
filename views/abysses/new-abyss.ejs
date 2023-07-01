@@ -15,6 +15,17 @@
     <label for="content">Content:</label>
     <textarea name="content" required></textarea>
 
+    <!-- Add enemies -->
+    <div id="enemies-container">
+      <div class="enemy">
+        <select name="enemies[]" required>
+          <option value="" disabled selected>Select Enemy</option>
+        </select>
+        <button type="button" class="remove-enemy">Remove</button>
+      </div>
+    </div>
+    <button type="button" id="add-enemy">Add Enemy</button>
+
     <button type="submit">Create Abyss</button>
   </form>
 <% } %>

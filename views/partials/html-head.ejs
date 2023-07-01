@@ -9,3 +9,42 @@
       href="/images/venti.webp"
       type="image/png">
     <title><%= title %></title>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // Add enemy functionality
+        const addEnemyButton = document.getElementById('add-enemy')
+        const enemiesContainer = document.getElementById('enemies-container')
+        
+        addEnemyButton.addEventListener('click', () => {
+          const enemyContainer = document.createElement('div')
+          enemyContainer.classList.add('enemy')
+          const enemySelect = document.createElement('select')
+          enemySelect.name = 'enemies[]'
+          enemySelect.required = true
+          const emptyOption = document.createElement('option')
+          emptyOption.value = ''
+          emptyOption.disabled = true
+          emptyOption.selected = true
+          emptyOption.textContent = 'Select Enemy'
+          enemySelect.appendChild(emptyOption)
+          const removeButton = document.createElement('button')
+          removeButton.type = 'button'
+          removeButton.classList.add('remove-enemy')
+          removeButton.textContent = 'Remove'
+          removeButton.addEventListener('click', () => {
+            enemyContainer.remove()
+          })
+          enemyContainer.appendChild(enemySelect)
+          enemyContainer.appendChild(removeButton)
+          enemiesContainer.appendChild(enemyContainer)
+        })
+    
+        // Remove enemy functionality
+        document.addEventListener('click', (event) => {
+          if (event.target && event.target.classList.contains('remove-enemy')) {
+            event.target.parentElement.remove()
+          }
+        })
+      })
+    </script>
