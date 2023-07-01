@@ -1,4 +1,4 @@
-import { Abyss } from "../models/abyss.js";
+import { Abyss, Enemy } from "../models/abyss.js"
 
 function index(req, res) {
 	Abyss.find({})
@@ -84,9 +84,31 @@ function createAbyss(req, res) {
   }
 }
 
+function newEnemy(req, res) {
+	const { user } = req
+
+	if (user && user.admin) {
+
+		Enemy.find({})
+		.then(enemies => {
+			res.render('abysses/new-enemy', {
+				enemies,
+				title: "Enemy Creator",
+			})
+		})
+		.catch(err => {
+			console.log(err)
+			res.redirect('abysses/new-enemy')
+		})
+	} else {
+		res.status(403).send("Unauthorized access")
+	}
+}
+
 export {
   index,
 	rateAbyss,
 	newAbyss,
-	createAbyss
+	createAbyss,
+  newEnemy
 }

@@ -14,7 +14,14 @@
       Abyss-All!
       </button>
       </a>
-      <% if (user) { %>
+      <% if (user && user.admin) { %>
+        <a href="/abysses/new-abyss">
+          <button type="submit">New Abyss</button>
+        </a>
+        <a href="/abysses/new-enemy">
+          <button type="submit">New Enemy</button>
+        </a>
+      <% } if (user) { %>
       <a href="/profiles/teams/new">
       <button type="submit">Create a Team!</button>
       </a>
@@ -25,10 +32,6 @@
       <button type="submit">Logout</button>
       </a>
       <a href="/profiles/profile"><button type="submit">Profile</button></a>
-      <% } if (user && user.admin) { %>
-        <a href="/abysses/new-abyss">
-          <button type="submit">New Abyss</button>
-        </a>
       <% } else { %>
       <div 
         id="g_id_onload"

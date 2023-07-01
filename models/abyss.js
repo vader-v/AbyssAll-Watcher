@@ -26,7 +26,9 @@ const abyssSchema = new Schema({
 })
 
 const Abyss = mongoose.model('Abyss', abyssSchema)
+const Enemy = mongoose.model('Enemy', enemySchema)
 
 export {
-  Abyss
+  Abyss,
+  Enemy
 }
