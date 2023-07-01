@@ -35,7 +35,18 @@
           removeButton.addEventListener('click', () => {
             enemyContainer.remove()
           })
+
+          const levelInput = document.createElement('input')
+          levelInput.type = 'number'
+          levelInput.name = 'levels[]'
+          levelInput.value = '60'
+          levelInput.min = '60'
+          levelInput.max = '120'
+          levelInput.step = '10'
+          levelInput.required = true
+
           enemyContainer.appendChild(enemySelect)
+          enemyContainer.appendChild(levelInput)
           enemyContainer.appendChild(removeButton)
           enemiesContainer.appendChild(enemyContainer)
         })

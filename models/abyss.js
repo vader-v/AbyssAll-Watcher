@@ -7,7 +7,8 @@ const enemySchema = new Schema({
   level: {
     type: Number,
     default: 60,
-    min: 60
+    min: 60,
+    max: 120
   },
   type: String,
   image:{
