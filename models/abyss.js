@@ -10,6 +10,9 @@ const enemySchema = new Schema({
     min: 60
   },
   type: String,
+  image:{
+    type: String,
+  }
 })
 
 const abyssSchema = new Schema({

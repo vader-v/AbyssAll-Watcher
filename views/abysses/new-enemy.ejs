@@ -2,5 +2,20 @@
 <%- include('../partials/nav') %>
 
 <h1>new enemy page</h1>
+<form action="create-enemy" method="POST">
+  <label for="name">Name:</label>
+  <input type="text" name="name" required>
+
+  <label for="image">Image Link:</label>
+  <input type="text" name="image" required>
+
+  <label for="level">Level:</label>
+  <input type="number" name="level" min="60" step="10" required>
+
+  <label for="type">Type:</label>
+  <input type="text" name="type" required>
+
+  <button type="submit">Create Enemy</button>
+</form>
 
 <%- include('../partials/footer') %>
