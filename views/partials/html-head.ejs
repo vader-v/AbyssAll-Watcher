@@ -4,68 +4,79 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link id="favicon"
-      rel="icon"
-      href="/images/venti.webp"
-      type="image/png">
+    <link id="favicon" rel="icon" href="/images/venti.webp" type="image/png" />
     <title><%= title %></title>
 
     <script>
-      document.addEventListener('DOMContentLoaded', () => {
-  // Add enemy functionality
-  const addEnemyButton = document.getElementById('add-enemy')
-  const enemiesContainer = document.getElementById('enemies-container')
+      document.addEventListener("DOMContentLoaded", () => {
+        // Add enemy functionality
+        const addEnemyButton = document.getElementById("add-enemy")
+        const enemiesContainer = document.getElementById("enemies-container")
+        const toggleButton = document.getElementById("toggle-enemy-list")
+        const enemyList = document.getElementById("enemy-list")
 
-  addEnemyButton.addEventListener('click', () => {
-    const enemyContainer = document.createElement('div')
-    enemyContainer.classList.add('enemy')
-    const enemySelect = document.createElement('select')
-    enemySelect.name = 'enemies[]'
-    enemySelect.required = true
+        addEnemyButton.addEventListener("click", () => {
+          const enemyContainer = document.createElement("div")
+          enemyContainer.classList.add("enemy")
+          const enemySelect = document.createElement("select")
+          enemySelect.name = "enemies[]"
+          enemySelect.required = true
 
-    enemySelect.addEventListener('change', () => {
-      const selectedOption = enemySelect.options[enemySelect.selectedIndex]
-      enemySelect.name = `enemies[${selectedOption.value}]`
-    })
-    // Retrieve the options from the initial select input
-    const initialSelect = document.querySelector('#enemies-container .enemy select')
-    const options = initialSelect.querySelectorAll('option')
+          enemySelect.addEventListener("change", () => {
+            const selectedOption =
+              enemySelect.options[enemySelect.selectedIndex]
+            enemySelect.name = `enemies[${selectedOption.value}]`
+          })
 
-    // Clone the options and append them to the newly created select input
-    options.forEach(option => {
-      const clonedOption = option.cloneNode(true)
-      enemySelect.appendChild(clonedOption)
-    })
+          // Retrieve the options from the initial select input
+          const initialSelect = document.querySelector(
+            "#enemies-container .enemy select"
+          )
+          const options = initialSelect.querySelectorAll("option")
 
-    const removeButton = document.createElement('button')
-    removeButton.type = 'button'
-    removeButton.classList.add('remove-enemy')
-    removeButton.textContent = 'Remove'
-    removeButton.addEventListener('click', () => {
-      enemyContainer.remove()
-    })
+          // Clone the options and append them to the newly created select input
+          options.forEach((option) => {
+            const clonedOption = option.cloneNode(true)
+            enemySelect.appendChild(clonedOption)
+          })
 
-    const levelInput = document.createElement('input')
-    levelInput.type = 'number'
-    levelInput.name = 'levels[]'
-    levelInput.value = '60'
-    levelInput.min = '60'
-    levelInput.max = '120'
-    levelInput.step = '10'
-    levelInput.required = true
+          const removeButton = document.createElement("button")
+          removeButton.type = "button"
+          removeButton.classList.add("remove-enemy")
+          removeButton.textContent = "Remove"
+          removeButton.addEventListener("click", () => {
+            enemyContainer.remove()
+          })
 
-    enemyContainer.appendChild(enemySelect)
-    enemyContainer.appendChild(levelInput)
-    enemyContainer.appendChild(removeButton)
-    enemiesContainer.appendChild(enemyContainer)
-  })
+          const levelInput = document.createElement("input")
+          levelInput.type = "number"
+          levelInput.name = "levels[]"
+          levelInput.value = "60"
+          levelInput.min = "60"
+          levelInput.max = "120"
+          levelInput.step = "10"
+          levelInput.required = true
 
-  // Remove enemy functionality
-  document.addEventListener('click', event => {
-    if (event.target && event.target.classList.contains('remove-enemy')) {
-      event.target.parentElement.remove()
-    }
-  })
-})
+          enemyContainer.appendChild(enemySelect)
+          enemyContainer.appendChild(levelInput)
+          enemyContainer.appendChild(removeButton)
+          enemiesContainer.appendChild(enemyContainer)
+        })
 
+        // Remove enemy functionality
+        document.addEventListener("click", (event) => {
+          if (event.target && event.target.classList.contains("remove-enemy")) {
+            event.target.parentElement.remove()
+          }
+        })
+      })
+      document.addEventListener("DOMContentLoaded", () => {
+        const toggleButton = document.getElementById("toggle-enemy-list")
+        const enemyList = document.getElementById("enemy-list")
+        toggleButton.addEventListener("click", () => {
+          enemyList.classList.toggle("hidden")
+        })
+      })
     </script>
+  </head>
+</html>
