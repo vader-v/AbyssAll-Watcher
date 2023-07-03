@@ -1,31 +1,37 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<h1>new enemy page</h1>
-<form action="create-enemy" method="POST">
-  <label for="name">Name:</label>
-  <input type="text" name="name" required>
-
-  <label for="image">Image Link:</label>
-  <input type="text" name="image" required>
-
-  <label for="type">Type:</label>
-  <input type="text" name="type" required>
-
-  <button type="submit">Create Enemy</button>
-</form>
-
-<div id="enemy-list-container">
-  <h2>Enemy List</h2>
-  <button type="button" id="toggle-enemy-list">Toggle Enemy List</button>
-  <div id="enemy-list" class="hidden">
-    <% enemies.forEach(enemy => { %>
-      <div class="enemy-option">
-        <img src="<%= enemy.image %>" alt="<%= enemy.name %>">
-        <span><%= enemy.name %></span>
-      </div>
-    <% }) %>
+<body>
+  <h1>New Enemy Page</h1>
+  <form action="create-enemy" method="POST">
+    <label for="name">Name:</label>
+    <input type="text" name="name" required>
+    
+    <label for="image">Image Link:</label>
+    <input type="text" name="image" required>
+    
+    <label for="type">Type:</label>
+    <input type="text" name="type" required>
+    
+    <button type="submit">Create Enemy</button>
+  </form>
+  
+  <div id="enemies" class="enemy-grid">
+    <h2>Enemy List</h2>
+    <button type="button" id="toggle-enemy-list">Toggle Enemy List</button>
+    <ol id="enemy-list" class="hidden">
+      <% enemies.forEach(enemy => { %>
+      <li class="enemy-card">
+        <div class="enemy-name-container">
+          <img src="<%= enemy.image %>" alt="<%= enemy.name %>">
+          <h3 class="enemy-name">
+            <%= enemy.name %>
+          </h3>
+        </div>
+      </li>
+      <% }) %>
+    </ol>
   </div>
-</div>
-
-<%- include('../partials/footer') %>
+  
+</body>
+  <%- include('../partials/footer') %>
