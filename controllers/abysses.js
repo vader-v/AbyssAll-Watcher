@@ -98,10 +98,11 @@ function newEnemy(req, res) {
 
 	if (user && user.admin) {
 
-		Enemy.find({})
-		.then(enemies => {
-			res.render('abysses/new-enemy', {
-				enemies,
+    Promise.all([Enemy.find({}).sort({ createdAt: -1 })])
+    .then(([enemies]) => {
+			const reversedEnemies = [...enemies].reverse()
+        res.render('abysses/new-enemy', {
+          enemies: reversedEnemies,
 				title: "Enemy Creator",
 			})
 		})
