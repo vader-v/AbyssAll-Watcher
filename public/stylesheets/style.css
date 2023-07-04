@@ -109,6 +109,7 @@ div.character-name-container {
   flex-direction: column;
 }
 
+.enemy-card,
 .character-card {
   width: 300px;
   height: 400px;
@@ -306,6 +307,9 @@ select {
 
 .enemy-grid {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
@@ -324,33 +328,9 @@ select {
   gap: 20px;
 }
 
-.enemy-card-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  margin: 10px;
-}
-
-.enemy-card-container .enemy-card {
+.enemy-card {
   margin-left: 10px;
   margin-right: 10px;
-}
-
-div.enemy-card-container {
-  border: 2px solid #f6f6f6;
-  border-radius: 8px;
-  background-color: #0e0a19;
-  width: 100%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 10px;
-  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
-}
-
-.enemy-card {
   border: 2px solid #f6f6f6;
   border-radius: 8px;
   background-color: #1f1738;
@@ -365,16 +345,17 @@ div.enemy-card-container {
 .enemy-name-container {
   align-items: center;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .enemy-card img {
-  max-width: 195px;
-  max-height: 195px;
+  width: 195px;
+  height: 195px;
   object-fit: stretch;
   border: 5px solid #ffd92f;
   border-radius: 8px;
   margin: 5px;
-  background-color: #ffffff;
+  background-color: #000000;
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
 }
 
@@ -382,7 +363,7 @@ div.enemy-card-container {
   text-align: center;
   margin-top: auto;
   font-size: 16px;
-  max-width: 160px;
+  max-width: 195px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
