@@ -43,18 +43,30 @@ function newAbyss(req, res) {
   if (user && user.admin) {
     Promise.all([Abyss.find({}), Enemy.find({})])
       .then(([abysses, enemies]) => {
+        const floors = [
+          { name: '9', levels: [] },
+          { name: '10', levels: [] },
+          { name: '11', levels: [] },
+          { name: '12', levels: [] },
+        ]
+        for (let i = 0; i < 3; i++) {
+          floors[0].levels.push({ name: `${i + 1}`, half1: [], half2: [] })
+          floors[1].levels.push({ name: `${i + 1}`, half1: [], half2: [] })
+          floors[2].levels.push({ name: `${i + 1}`, half1: [], half2: [] })
+        }
         res.render('abysses/new-abyss', {
           abysses,
           enemies,
+          floors,
           title: "Abyss Creator",
-        });
+        })
       })
       .catch(err => {
         console.log(err);
-        res.redirect('/abysses/abyss-all');
+        res.redirect('/abysses/abyss-all')
       });
   } else {
-    res.status(403).send("Unauthorized access");
+    res.status(403).send("Unauthorized access")
   }
 }
 
@@ -62,26 +74,36 @@ function createAbyss(req, res) {
   const { user } = req
 
   if (user && user.admin) {
-    const { title, startDate, endDate, content, enemies, levels } = req.body
+    const { title, startDate, endDate, content, enemies, levels, floors } = req.body
 
     const newAbyss = new Abyss({
       title,
       startDate,
       endDate,
       content,
-      enemies: [] // Initialize the enemies array
+      enemies: [], // Initialize the enemies array
+      floors: [], // Initialize the floors array
     })
 
-    // Loop through the enemies and levels arrays to create an enemy object with its corresponding level
-    for (let i = 0; i < enemies.length; i++) {
-    const enemy = {
-      enemyId: enemies[i],
-      level: levels[i]
+    for (const floorData of floors) {
+      const { name, levels } = floorData
+      const floor = {
+        name,
+        levels: [],
+      }
+      for (const levelData of levels) {
+        const { half1, half2 } = levelData
+        const level = {
+          name: levelData.name,
+          half1: enemies[half1],
+          half2: enemies[half2],
+          ratings: [],
+        }
+        floor.levels.push(level)
+      }
+      newAbyss.floors.push(floor)
     }
-    newAbyss.enemies.push(enemy)
-    }
-    console.log(newAbyss)
-    console.log(req.body)
+
     newAbyss.save()
     .then(() => {
       res.redirect('/abysses/abyss-all')
@@ -90,6 +112,8 @@ function createAbyss(req, res) {
       console.log(err)
       res.redirect('/abysses/new-abyss')
     })
+  } else {
+    res.status(403).send("Unauthorized access")
   }
 }
 

@@ -1,5 +1,5 @@
 import mongoose from 'mongoose'
-import ratingSchema from './rating.js'
+import { Rating } from './rating.js'
 
 const Schema = mongoose.Schema
 
@@ -24,7 +24,7 @@ const levelSchema = new Schema({
   },
   half1: [enemySchema],
   half2: [enemySchema],
-  ratings: [ratingSchema],
+  ratings: [Rating.schema],
 })
 
 const floorSchema = new Schema({
@@ -49,5 +49,6 @@ const Enemy = mongoose.model('Enemy', enemySchema)
 
 export {
   Abyss,
-  Enemy
+  Enemy,
+  Rating
 }
