@@ -15,6 +15,23 @@
     <label for="content">Content:</label>
     <textarea name="content" required></textarea>
 
+    <div id="floors-container">
+      <% floors.forEach(floor => { %>
+        <div class="floor">
+          <h3 class="floor-title">Floor <%= floor.name %></h3>
+          <div class="expandable-content">
+            <% for (let i = 1; i <= 3; i++) { %>
+              <div class="level">
+                <h4 class="level-title">Level <%= i %></h4>
+                <div class="expandable-content">
+                  
+                </div>
+              </div>
+            <% } %>
+          </div>
+        </div>
+      <% }) %>
+    </div>
     <!-- Add enemies -->
     <div id="enemies-container">
       <div class="enemy">
