@@ -18,6 +18,10 @@ const enemySchema = new Schema({
 })
 
 const levelSchema = new Schema({
+  name: {
+    type: String,
+    enum: ['1', '2', '3'],
+  },
   half1: [enemySchema],
   half2: [enemySchema],
   ratings: [ratingSchema],
