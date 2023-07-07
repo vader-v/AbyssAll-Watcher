@@ -15,6 +15,8 @@ const enemySchema = new Schema({
   image:{
     type: String,
   }
+}, {
+  timestamps: true
 })
 
 const levelSchema = new Schema({
@@ -42,6 +44,8 @@ const abyssSchema = new Schema({
   content: String,
   updatedAt: Date,
   floors: [floorSchema],
+}, {
+  timestamps: true
 })
 
 const Abyss = mongoose.model('Abyss', abyssSchema)

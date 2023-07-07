@@ -2,53 +2,102 @@
 <%- include('../partials/nav') %>
 
 <% if (user && user.admin) { %>
-  <form action="new-abyss" method="POST">
-    <label for="title">Title:</label>
-    <input type="text" name="title" required>
+<form action="new-abyss" method="POST">
+  <label for="title">Title:</label>
+  <input type="text" name="title" required>
 
-    <label for="startDate">Start Date:</label>
-    <input type="date" name="startDate" required>
+  <label for="startDate">Start Date:</label>
+  <input type="date" name="startDate" required>
 
-    <label for="endDate">End Date:</label>
-    <input type="date" name="endDate" required>
+  <label for="endDate">End Date:</label>
+  <input type="date" name="endDate" required>
 
-    <label for="content">Content:</label>
-    <textarea name="content" required></textarea>
+  <label for="content">Content:</label>
+  <textarea name="content" required></textarea>
 
-    <div id="floors-container">
-      <% floors.forEach(floor => { %>
-        <div class="floor">
-          <h3 class="floor-title">Floor <%= floor.name %></h3>
-          <div class="expandable-content">
-            <% for (let i = 1; i <= 3; i++) { %>
-              <div class="level">
-                <h4 class="level-title">Level <%= i %></h4>
-                <div class="expandable-content">
-                  <% for (let h = 1; h <= 2; h++) { %>
-                    <h3>Half <%= h %></h3>
-                    <div class="enemy-container" id="enemy-container-floor-<%= floor.name %>-level-<%= i %>-half-<%= h %>">
-                      <button type="button" id="add-enemy-floor-<%= floor.name %>-level-<%= i %>-half-<%= h %>">Add</button>
-                      <select name="enemies-floor-<%= floor.name %>-level-<%= i %>-half-<%= h %>[]" required>
-                        <option value="" disabled selected>Select Enemy</option>
-                        <% enemies.forEach(enemy => { %>
-                          <% const enemyOptionValue = enemy._id; %>
-                          <% const enemyOptionText = enemy.name; %>
-                          <option value="<%= enemyOptionValue %>"><%= enemyOptionText %></option>
-                        <% }); %>
-                      </select>
-                      <input type="number" name="levels-floor-<%= floor.name %>-level-<%= i %>-half-<%= h %>[]" min="60" max="120" step="10" value="60" >
-                      <button type="button" class="remove-enemy">Remove</button>
-                    </div>
-                  <% } %>
+  <div id="floors-container">
+    <% floors.forEach((floor, floorIndex) => { %>
+      <div class="floor">
+        <h3 class="floor-title">Floor <%= floorIndex + 9 %></h3>
+        <div class="expandable-content">
+          <% floor.levels.forEach((level, levelIndex) => { %>
+            <div class="level">
+              <h4 class="level-title">Level <%= levelIndex + 1 %></h4>
+              <div class="expandable-content">
+                <h3>Half 1</h3>
+                <button type="button" class="add-enemy-button" data-floor="<%= floorIndex %>" data-level="<%= levelIndex %>" data-half="1">Add</button>
+                <div class="enemy-container" id="enemy-container-floor-<%= floorIndex %>-level-<%= levelIndex %>-half-1">
+                  <select name="floors[<%= floorIndex %>][levels][<%= levelIndex %>][half1][]" required>
+                    <option value="" disabled selected>Select Enemy</option>
+                    <% enemies.forEach(enemy => { %>
+                      <option value="<%= enemy._id %>"><%= enemy.name %></option>
+                    <% }) %>
+                  </select>
+                </div>
+  
+                <h3>Half 2</h3>
+                <button type="button" class="add-enemy-button" data-floor="<%= floorIndex %>" data-level="<%= levelIndex %>" data-half="2">Add</button>
+                <div class="enemy-container" id="enemy-container-floor-<%= floorIndex %>-level-<%= levelIndex %>-half-2">
+                  <select name="floors[<%= floorIndex %>][levels][<%= levelIndex %>][half2][]" required>
+                    <option value="" disabled selected>Select Enemy</option>
+                    <% enemies.forEach(enemy => { %>
+                      <option value="<%= enemy._id %>"><%= enemy.name %></option>
+                    <% }) %>
+                  </select>
                 </div>
               </div>
-            <% } %>
-          </div>
+            </div>
+          <% }) %>
         </div>
+      </div>
+    <% }) %>
+  </div>
+  <button type="submit">Create Abyss</button>
+</form>
+
+<script>
+  function addEnemy(floorIndex, levelIndex, half) {
+    const enemyContainer = document.createElement("div")
+    enemyContainer.classList.add("enemy-container")
+
+    const enemySelect = document.createElement("select")
+    enemySelect.name = `floors[${floorIndex}][levels][${levelIndex}][half${half}][]`
+    enemySelect.required = true
+    enemySelect.innerHTML = `
+      <option value="" disabled selected>Select Enemy</option>
+      <% enemies.forEach(enemy => { %>
+        <option value="<%= enemy._id %>"><%= enemy.name %></option>
       <% }) %>
-    </div>
-    <button type="submit">Create Abyss</button>
-  </form>
+    `
+
+    const removeButton = document.createElement("button")
+    removeButton.type = "button"
+    removeButton.className = "remove-enemy"
+    removeButton.textContent = "Remove"
+
+    removeButton.addEventListener("click", () => {
+      enemyContainer.remove()
+    })
+
+    enemyContainer.appendChild(enemySelect)
+    enemyContainer.appendChild(removeButton)
+
+    const floorContainer = document.getElementById(
+      `enemy-container-floor-${floorIndex}-level-${levelIndex}-half-${half}`
+    )
+    floorContainer.appendChild(enemyContainer)
+  }
+
+  document.addEventListener("click", (event) => {
+    if (event.target.classList.contains("add-enemy-button")) {
+      const floorIndex = event.target.getAttribute("data-floor")
+      const levelIndex = event.target.getAttribute("data-level")
+      const half = event.target.getAttribute("data-half")
+      addEnemy(floorIndex, levelIndex, half)
+    }
+  })
+</script>
+
 <% } %>
 
 <%- include('../partials/footer') %>

@@ -34,4 +34,24 @@
   </div>
   
 </body>
+
+<script>
+  const toggleEnemyListButton = document.getElementById("toggle-enemy-list")
+  const enemyList = document.getElementById("enemy-list")
+  
+  toggleEnemyListButton.addEventListener("click", () => {
+    enemyList.classList.toggle("hidden")
+  })
+
+  const enemyCards = document.querySelectorAll(".enemy-card")
+
+  enemyCards.forEach(enemyCard => {
+    enemyCard.addEventListener("click", () => {
+      const enemyName = enemyCard.querySelector(".enemy-name").innerText
+      const enemyNameInput = document.querySelector("input[name='name']")
+      enemyNameInput.value = enemyName
+    })
+  })
+
+</script>
   <%- include('../partials/footer') %>

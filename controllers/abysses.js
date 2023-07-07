@@ -19,41 +19,64 @@ function rateAbyss(req, res) {
   const { rating } = req.body
 
   Abyss.findById(abyssId)
-    .then((abyss) => {
-      if (!abyss) {
-        return res.status(404).send('Abyss not found')
-      }
+  .then((abyss) => {
+    if (!abyss) {
+      return res.status(404).send('Abyss not found')
+    }
 
-      // Save the rating to the abyss
-      abyss.ratings.push(rating)
-      return abyss.save()
-    })
-    .then(() => {
-      res.redirect('abysses/abyss-all')
-    })
-    .catch((err) => {
-      console.log(err)
-      res.redirect('abysses/abyss-all')
-    })
+    // Save the rating to the abyss
+    abyss.ratings.push(rating)
+    return abyss.save()
+  })
+  .then(() => {
+    res.redirect('abysses/abyss-all')
+  })
+  .catch((err) => {
+    console.log(err)
+    res.redirect('abysses/abyss-all')
+  })
 }
 
 function newAbyss(req, res) {
-  const { user } = req;
+  const { user } = req
 
   if (user && user.admin) {
     Promise.all([Abyss.find({}), Enemy.find({})])
       .then(([abysses, enemies]) => {
         const floors = [
-          { name: '9', levels: [] },
-          { name: '10', levels: [] },
-          { name: '11', levels: [] },
-          { name: '12', levels: [] },
+          {
+            name: '9',
+            levels: [
+              { name: '1', half1: [], half2: [] },
+              { name: '2', half1: [], half2: [] },
+              { name: '3', half1: [], half2: [] }
+            ]
+          },
+          {
+            name: '10',
+            levels: [
+              { name: '1', half1: [], half2: [] },
+              { name: '2', half1: [], half2: [] },
+              { name: '3', half1: [], half2: [] }
+            ]
+          },
+          {
+            name: '11',
+            levels: [
+              { name: '1', half1: [], half2: [] },
+              { name: '2', half1: [], half2: [] },
+              { name: '3', half1: [], half2: [] }
+            ]
+          },
+          {
+            name: '12',
+            levels: [
+              { name: '1', half1: [], half2: [] },
+              { name: '2', half1: [], half2: [] },
+              { name: '3', half1: [], half2: [] }
+            ]
+          }
         ]
-        for (let i = 0; i < 3; i++) {
-          floors[0].levels.push({ name: `${i + 1}`, half1: [], half2: [] })
-          floors[1].levels.push({ name: `${i + 1}`, half1: [], half2: [] })
-          floors[2].levels.push({ name: `${i + 1}`, half1: [], half2: [] })
-        }
         res.render('abysses/new-abyss', {
           abysses,
           enemies,
@@ -62,9 +85,9 @@ function newAbyss(req, res) {
         })
       })
       .catch(err => {
-        console.log(err);
+        console.log(err)
         res.redirect('/abysses/abyss-all')
-      });
+      })
   } else {
     res.status(403).send("Unauthorized access")
   }
@@ -74,46 +97,75 @@ function createAbyss(req, res) {
   const { user } = req
 
   if (user && user.admin) {
-    const { title, startDate, endDate, content, enemies, levels, floors } = req.body
+    const { title, startDate, endDate, content, floors } = req.body
 
-    const newAbyss = new Abyss({
-      title,
-      startDate,
-      endDate,
-      content,
-      enemies: [], // Initialize the enemies array
-      floors: [], // Initialize the floors array
-    })
+    Enemy.find({})
+      .then((enemies) => {
+        const newAbyss = new Abyss({
+          title,
+          startDate,
+          endDate,
+          content,
+          enemies: [],
+          floors: [],
+        })
 
-    for (const floorData of floors) {
-      const { name, levels } = floorData
-      const floor = {
-        name,
-        levels: [],
-      }
-      for (const levelData of levels) {
-        const { half1, half2 } = levelData
-        const level = {
-          name: levelData.name,
-          half1: enemies[half1],
-          half2: enemies[half2],
-          ratings: [],
+        for (const floorData of Object.values(floors)) {
+          const { name, levels } = floorData
+          const floor = {
+            name,
+            levels: [],
+          }
+
+          for (const levelData of levels) {
+            const { name, half1, half2 } = levelData
+            const level = {
+              name,
+              half1: [],
+              half2: [],
+              ratings: [],
+            }
+
+            for (const enemyIdHalf1 of half1) {
+              const enemyHalf1 = enemies.find(
+                (e) => e._id.toString() === enemyIdHalf1
+              )
+              if (enemyHalf1) {
+                level.half1.push(enemyHalf1)
+              }
+            }
+
+            for (const enemyIdHalf2 of half2) {
+              const enemyHalf2 = enemies.find(
+                (e) => e._id.toString() === enemyIdHalf2
+              )
+              if (enemyHalf2) {
+                level.half2.push(enemyHalf2)
+              }
+            }
+
+            floor.levels.push(level)
+          }
+
+          newAbyss.floors.push(floor)
         }
-        floor.levels.push(level)
-      }
-      newAbyss.floors.push(floor)
-    }
 
-    newAbyss.save()
-    .then(() => {
-      res.redirect('/abysses/abyss-all')
-    })
-    .catch((err) => {
-      console.log(err)
-      res.redirect('/abysses/new-abyss')
-    })
+        newAbyss
+          .save()
+          .then(() => {
+            res.redirect('/abysses/abyss-all')
+          })
+          .catch((err) => {
+            console.log(err)
+            res.redirect('/abysses/new-abyss')
+          })
+      })
+      .catch((err) => {
+        console.log(err)
+        res.redirect('/abysses/new-abyss')
+      })
   } else {
-    res.status(403).send("Unauthorized access")
+    res.status(403).send('Unauthorized access')
   }
 }
 
