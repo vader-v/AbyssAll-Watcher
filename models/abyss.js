@@ -15,8 +15,6 @@ const enemySchema = new Schema({
   image:{
     type: String,
   }
-}, {
-  timestamps: true
 })
 
 const levelSchema = new Schema({
