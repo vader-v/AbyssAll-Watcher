@@ -216,6 +216,26 @@ function createEnemy(req, res) {
   }
 }
 
+function showAbyss(req, res) {
+  const { abyssId } = req.params
+
+  Abyss.findById(abyssId)
+    .then((abyss) => {
+      if (!abyss) {
+        return res.status(404).send('Abyss not found')
+      }
+
+      res.render('abysses/abyss-details', {
+        abyss,
+        title: abyss.title,
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+      res.redirect('/abysses/abyss-all')
+    })
+}
+
 export {
   index,
 	rateAbyss,
@@ -223,4 +243,5 @@ export {
 	createAbyss,
   newEnemy,
   createEnemy,
+  showAbyss,
 }

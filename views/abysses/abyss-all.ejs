@@ -14,78 +14,20 @@
                   <h2 class="abyss-title"><%= abyss.title %></h2>
                   <div class="abyss-date">
                     <p>
-                      Start Date: <%= abyss.startDate %>
+                      Start Date: <%= abyss.startDate.toLocaleDateString() %>
                       <br />
-                      End Date: <%= abyss.endDate %>
+                      End Date: <%= abyss.endDate.toLocaleDateString() %>
                     </p>
                   </div>
                   <div class="abyss-content">
                     <p><%= abyss.content %></p>
-                    <div class="rating-container">
-                      <div class="rating-group">
-                      <h8>| Floor #9 |</h8>
-                      <div class="stars-container">
-                        <span class="star" data-rating="1"></span>
-                        <span class="star" data-rating="2"></span>
-                        <span class="star" data-rating="3"></span>
-                        <span class="star" data-rating="4"></span>
-                      <span class="star" data-rating="5"></span>
-                      <span class="star" data-rating="6"></span>
-                      <span class="star" data-rating="7"></span>
-                      <span class="star" data-rating="8"></span>
-                      <span class="star" data-rating="9"></span>
-                    </div>
-                    </div>
-                    <div class="rating-group">
-                      <h8>| Floor #10 |</h8>
-                      <div class="stars-container">
-                        <span class="star" data-rating="10"></span>
-                        <span class="star" data-rating="11"></span>
-                        <span class="star" data-rating="12"></span>
-                        <span class="star" data-rating="13"></span>
-                      <span class="star" data-rating="14"></span>
-                      <span class="star" data-rating="15"></span>
-                      <span class="star" data-rating="16"></span>
-                      <span class="star" data-rating="17"></span>
-                      <span class="star" data-rating="18"></span>
-                    </div>
-                    </div>
-                    <div class="rating-group">
-                      <h8>| Floor #11 |</h8>
-                      <div class="stars-container">
-                        <span class="star" data-rating="19"></span>
-                        <span class="star" data-rating="20"></span>
-                      <span class="star" data-rating="21"></span>
-                      <span class="star" data-rating="22"></span>
-                      <span class="star" data-rating="23"></span>
-                      <span class="star" data-rating="24"></span>
-                      <span class="star" data-rating="25"></span>
-                      <span class="star" data-rating="26"></span>
-                      <span class="star" data-rating="27"></span>
-                    </div>
-                    </div>
-                    <div class="rating-group">
-                      <h8>| Floor #12 |</h8>
-                      <div class="stars-container">
-                        <span class="star" data-rating="28"></span>
-                        <span class="star" data-rating="29"></span>
-                      <span class="star" data-rating="30"></span>
-                      <span class="star" data-rating="31"></span>
-                      <span class="star" data-rating="32"></span>
-                      <span class="star" data-rating="33"></span>
-                      <span class="star" data-rating="34"></span>
-                      <span class="star" data-rating="35"></span>
-                      <span class="star" data-rating="36"></span>
-                    </div>
                     </div>
                   </div>
                   <p class="abyss-updated">
-                    <h8> <%= abyss.updatedAt %> </h8>
+                    <h8>Updated At: <%= abyss.updatedAt.toLocaleDateString() %></h8>
                   </p>
                 </div>
-              </div>
               </a>
-            </div>
             </li>
           <% }) %>
         </ol>
