@@ -110,45 +110,43 @@ function createAbyss(req, res) {
           floors: [],
         })
 
-        for (const floorData of Object.values(floors)) {
-          const { name, levels } = floorData
+        floors.forEach((floorData, floorIndex) => {
           const floor = {
-            name,
+            name: `${9 + floorIndex}`,
             levels: [],
           }
 
-          for (const levelData of levels) {
-            const { name, half1, half2 } = levelData
+          floorData.levels.forEach((levelData, levelIndex) => {
             const level = {
-              name,
+              name: `${levelIndex + 1}`,
               half1: [],
               half2: [],
               ratings: [],
             }
 
-            for (const enemyIdHalf1 of half1) {
+            levelData.half1.forEach((enemyIdHalf1) => {
               const enemyHalf1 = enemies.find(
-                (e) => e._id.toString() === enemyIdHalf1
+                (enemy) => enemy._id.toString() === enemyIdHalf1
               )
               if (enemyHalf1) {
                 level.half1.push(enemyHalf1)
               }
-            }
+            })
 
-            for (const enemyIdHalf2 of half2) {
+            levelData.half2.forEach((enemyIdHalf2) => {
               const enemyHalf2 = enemies.find(
-                (e) => e._id.toString() === enemyIdHalf2
+                (enemy) => enemy._id.toString() === enemyIdHalf2
               )
               if (enemyHalf2) {
                 level.half2.push(enemyHalf2)
               }
-            }
+            })
 
             floor.levels.push(level)
-          }
+          })
 
           newAbyss.floors.push(floor)
-        }
+        })
 
         newAbyss
           .save()
