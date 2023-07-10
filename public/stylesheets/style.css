@@ -221,11 +221,19 @@ select {
   text-align: center;
 }
 
+.grid-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
 .abyss-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
+  gap: 20px;
+  flex: 1;
   margin: 0 auto;
   max-width: 1200px;
 }
@@ -311,6 +319,7 @@ select {
 .enemy-grid {
   display: flex;
   flex-wrap: wrap;
+  flex: 2;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;

@@ -3,8 +3,11 @@ import { Abyss, Enemy } from "../models/abyss.js"
 function index(req, res) {
 	Abyss.find({})
 		.then((abysses) => {
+      Enemy.find({})
+      .then((enemies) => {
 			res.render('abysses/abyss-all', {
 				abysses,
+        enemies,
 				title: "Abyss-All!",
 			})
 		})
@@ -12,6 +15,7 @@ function index(req, res) {
 			console.log(err)
 			res.redirect('/')
 		})
+  })
 }
 
 function rateAbyss(req, res) {

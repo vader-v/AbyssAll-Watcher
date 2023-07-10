@@ -4,11 +4,12 @@
   <h1 class="page-title">Abyss-All!</h1>
   <h3>Click the links to see details on each abyss!</h3>
   <section>
-    <div class="abyss-grid">
-      <ol>
-        <% abysses.forEach(abyss => { %>
-          <li class="abyss-card">
+    <div class="grid-container">
+      <div class="abyss-grid">
+        <ol>
+          <% abysses.forEach(abyss => { %>
             <a href="/abysses/<%= abyss._id %>">
+            <li class="abyss-card">
                 <div class="abyss-description">
                   <h2 class="abyss-title"><%= abyss.title %></h2>
                   <div class="abyss-date">
@@ -20,17 +21,44 @@
                   </div>
                   <div class="abyss-content">
                     <p><%= abyss.content %></p>
-                    </div>
-                    <p class="abyss-updated">
-                      <h8>Updated At: <%= abyss.updatedAt.toLocaleDateString() %></h8>
-                    </p>
                   </div>
-              </a>
+                  <p class="abyss-updated">
+                    <h8>Updated At: <%= abyss.updatedAt.toLocaleDateString() %></h8>
+                  </p>
+                </div>
               </li>
+            </a>
           <% }) %>
         </ol>
+      </div>
+
+      <div id="enemies" class="enemy-grid">
+        <h2>Enemy List</h2>
+        <button type="button" id="toggle-enemy-list">Toggle Enemy List</button>
+        <ol id="enemy-list" class="hidden">
+          <% enemies.forEach(enemy => { %>
+            <li class="enemy-card">
+              <div class="enemy-name-container">
+                <img src="<%= enemy.image %>" alt="<%= enemy.name %>">
+                <h3 class="enemy-name">
+                  <%= enemy.name %>
+                </h3>
+              </div>
+            </li>
+          <% }) %>
+        </ol>
+      </div>
     </div>
   </section>
 </body>
+
+<script>
+  const toggleEnemyListButton = document.getElementById("toggle-enemy-list")
+  const enemyList = document.getElementById("enemy-list")
+  
+  toggleEnemyListButton.addEventListener("click", () => {
+    enemyList.classList.toggle("hidden")
+  })
+</script>
 
 <%- include('../partials/footer') %>
