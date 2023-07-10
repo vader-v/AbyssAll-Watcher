@@ -230,23 +230,26 @@ select {
   max-width: 1200px;
 }
 
-.abyss-card-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  margin: 10px;
+.abyss-description {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .abyss-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
   border: 2px solid #f6f6f6;
   border-radius: 8px;
   background-color: #1f1738;
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.3);
   height: 300px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px;
 }
 
 .abyss-title {

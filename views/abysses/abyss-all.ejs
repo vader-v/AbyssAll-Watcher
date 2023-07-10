@@ -2,14 +2,13 @@
 <%- include('../partials/nav') %>
 <body>
   <h1 class="page-title">Abyss-All!</h1>
+  <h3>Click the links to see details on each abyss!</h3>
   <section>
     <div class="abyss-grid">
-      <h3>Click the links to see details on each abyss!</h3>
       <ol>
         <% abysses.forEach(abyss => { %>
           <li class="abyss-card">
-              <div class="abyss-card-container">
-              <a href="/abysses/<%= abyss._id %>">
+            <a href="/abysses/<%= abyss._id %>">
                 <div class="abyss-description">
                   <h2 class="abyss-title"><%= abyss.title %></h2>
                   <div class="abyss-date">
@@ -22,13 +21,12 @@
                   <div class="abyss-content">
                     <p><%= abyss.content %></p>
                     </div>
+                    <p class="abyss-updated">
+                      <h8>Updated At: <%= abyss.updatedAt.toLocaleDateString() %></h8>
+                    </p>
                   </div>
-                  <p class="abyss-updated">
-                    <h8>Updated At: <%= abyss.updatedAt.toLocaleDateString() %></h8>
-                  </p>
-                </div>
               </a>
-            </li>
+              </li>
           <% }) %>
         </ol>
     </div>
